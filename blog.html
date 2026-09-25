@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY Journal - Notes on running events that actually hold up. Production notes, field reports, and event strategy from corporate event experts.">
+  <title>Blog & Field Reports | STACKLY Corporate Event Management</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  
+  <!-- Google Fonts: Bebas Neue, Oswald, Inter, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="stylesheet" href="css/blog.css?v=6.2">
+</head>
+<body data-page="blog">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="STACKLY Corporate Event Management">
+        <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link">HOME</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link">SERVICES</a></div>
+        <div class="nav-item"><a href="blog.html" class="nav-link active">BLOG</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">CONTACT</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-orange btn-pill btn-sm">REGISTER</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="services.html" class="mobile-nav-link">Services <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link active">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="login.html" class="btn btn-orange btn-pill btn-sm" style="width: 100%;">Register Now</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+
+    <!-- ==================== SECTION 1: HERO (Dark #15140F) ==================== -->
+    <section class="blog-hero" id="blog-hero">
+      <!-- Ambient Interactive Particle Canvas -->
+      <canvas class="blog-hero-particles-canvas" id="blogHeroCanvas"></canvas>
+      <div class="blog-hero-ambient-glow"></div>
+
+      <div class="container">
+        <div class="blog-hero-grid">
+          
+          <!-- Hero Left Column -->
+          <div class="blog-hero-content" data-reveal="fade-up">
+            <h1 class="blog-hero-title">
+              NOTES ON RUNNING<br>
+              EVENTS THAT <span class="highlight-orange glow-text text-shimmer-sweep">ACTUALLY HOLD UP.</span>
+            </h1>
+            <p class="blog-hero-desc">
+              The Stackly journal — production notes, client craft, delivery dispatches, and honest field reports from the production floor. No fluff, never generic.
+            </p>
+            <div class="blog-hero-tags">
+              <span class="blog-tag-item">Production notes</span>
+              <span class="blog-tag-dot">&bull;</span>
+              <span class="blog-tag-item">Client dispatches</span>
+              <span class="blog-tag-dot">&bull;</span>
+              <span class="blog-tag-item">Field reports</span>
+            </div>
+          </div>
+
+          <!-- Hero Right Column Media -->
+          <div class="blog-hero-media" data-reveal="fade-left">
+            <div class="blog-hero-img-card">
+              <img src="assets/blog-hero-badges.webp" alt="Hands organizing name badges and conference lanyards on wooden desk" class="blog-hero-img">
+              <div class="blog-hero-img-overlay"></div>
+              <div class="blog-hero-shimmer"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: LATEST FROM STACKLY (Dark #15140F) ==================== -->
+    <section class="blog-latest-section" id="latest-posts">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="blog-latest-header" data-reveal="fade-up">
+          <div class="blog-latest-header-left">
+            <span class="blog-section-tag">// ARTICLES FROM OUR TEAM //</span>
+            <h2 class="blog-section-title-light">LATEST FROM STACKLY</h2>
+          </div>
+          <div class="blog-latest-header-right">
+            <p class="blog-latest-header-desc">
+              STACKLY — HEADLINE FEATURES, ACTIONABLE GUIDES, AND BEHIND-THE-SCENES STORIES FROM THE VOLTAGE OF THE PRODUCTION FLOOR. STRAIGHT TALK ON HOW TO RUN AN EVENT THAT SETS A NEW BENCHMARK.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 Folder-Tab / Cutout Blog Cards Grid -->
+        <div class="blog-cards-grid">
+          
+          <!-- Card 1 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="0" data-article="Why Run-of-Show Is Rehearsed The Day Before" data-category="PRODUCTION" data-date="July 14, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/blog-card-setup.webp" alt="Why Run-of-Show Is Rehearsed The Day Before" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">PRODUCTION</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-07-14">July 14, 2024</time>
+              <h3 class="blog-folder-title">Why Run-of-Show Is Rehearsed The Day Before</h3>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="100" data-article="How To Structure A Five-Figure Sponsor Ledger" data-category="EVENT PLANNING" data-date="July 18, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/blog-card-cards.webp" alt="How To Structure A Five-Figure Sponsor Ledger" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">EVENT PLANNING</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-07-18">July 18, 2024</time>
+              <h3 class="blog-folder-title">How To Structure A Five-Figure Sponsor Ledger</h3>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="200" data-article="10 Mistakes To Avoid On Your First 1,000-User Expo" data-category="STRATEGY & TIPS" data-date="July 22, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/blog-hero-badges.webp" alt="10 Mistakes To Avoid On Your First 1,000-User Expo" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">STRATEGY &amp; TIPS</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-07-22">July 22, 2024</time>
+              <h3 class="blog-folder-title">10 Mistakes To Avoid On Your First 1,000-User Expo</h3>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="300" data-article="Multi-Track Audio Routing: Zero Latency Keys" data-category="STAGE & AV" data-date="July 25, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/service-meeting-room.webp" alt="Multi-Track Audio Routing: Zero Latency Keys" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">STAGE &amp; AV</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-07-25">July 25, 2024</time>
+              <h3 class="blog-folder-title">Multi-Track Audio Routing: Zero Latency Keys</h3>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="400" data-article="The Art Of Keynote Speaker Briefing Packages" data-category="LEADERSHIP & TALENT" data-date="July 28, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/format-conferences.webp" alt="The Art Of Keynote Speaker Briefing Packages" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">LEADERSHIP &amp; TALENT</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-07-28">July 28, 2024</time>
+              <h3 class="blog-folder-title">The Art Of Keynote Speaker Briefing Packages</h3>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="blog-folder-card" data-reveal="fade-up" data-delay="500" data-article="How To Negotiate Multi-Hotel Room Blocks At Scale" data-category="CORPORATE TRAVEL" data-date="August 02, 2024">
+            <div class="blog-folder-thumb-wrap">
+              <img src="assets/service-hero-auditorium.webp" alt="How To Negotiate Multi-Hotel Room Blocks At Scale" class="blog-folder-img">
+              <div class="blog-folder-overlay"></div>
+              <span class="blog-category-badge">CORPORATE TRAVEL</span>
+            </div>
+            <div class="blog-folder-body">
+              <time class="blog-folder-date" datetime="2024-08-02">August 02, 2024</time>
+              <h3 class="blog-folder-title">How To Negotiate Multi-Hotel Room Blocks At Scale</h3>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: EVENT INSIGHTS & STORIES (Cream #F4EFE6) ==================== -->
+    <section class="blog-insights-section" id="insights-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="blog-insights-header" data-reveal="fade-up">
+          <h2 class="blog-section-title-dark">EVENT INSIGHTS &amp; STORIES</h2>
+          <p class="blog-insights-subtitle">
+            Explore expert tips, industry trends, and inspiring stories to help you plan and execute successful events.
+          </p>
+        </div>
+
+        <!-- Magazine Overlay Cards Grid -->
+        <div class="blog-magazine-grid">
+          
+          <!-- Top Row: Featured Large Left Card -->
+          <article class="blog-mag-card blog-mag-card--featured" data-reveal="fade-up" data-delay="0" data-article="Building Networking Opportunities Into Your Event">
+            <div class="blog-mag-bg-wrap">
+              <img src="assets/crowd-banner.webp" alt="Building Networking Opportunities Into Your Event" class="blog-mag-bg-img">
+              <div class="blog-mag-gradient"></div>
+            </div>
+            <div class="blog-mag-content">
+              <span class="blog-mag-tag">PRODUCTION</span>
+              <h3 class="blog-mag-title">BUILDING NETWORKING OPPORTUNITIES INTO YOUR EVENT</h3>
+              <p class="blog-mag-desc">
+                How thoughtful venue and seating layout drives real, authentic conversations between executives and delegates.
+              </p>
+              <div class="blog-mag-meta">
+                <span>6 min read</span>
+                <span class="meta-dot">&bull;</span>
+                <time datetime="2024-06-24">June 24, 2024</time>
+              </div>
+            </div>
+          </article>
+
+          <!-- Top Row: Right Card (Speaker) -->
+          <article class="blog-mag-card blog-mag-card--speaker" data-reveal="fade-up" data-delay="150" data-article="Creating Immersive Experiences For High-Stakes Events">
+            <div class="blog-mag-bg-wrap">
+              <img src="assets/case-study-speaker.webp" alt="Creating Immersive Experiences For High-Stakes Events" class="blog-mag-bg-img">
+              <div class="blog-mag-gradient"></div>
+            </div>
+            <div class="blog-mag-content">
+              <span class="blog-mag-tag">KEYNOTE</span>
+              <h3 class="blog-mag-title">CREATING IMMERSIVE EXPERIENCES FOR HIGH-STAKES EVENTS</h3>
+              <p class="blog-mag-desc">
+                Why sensory lighting and staging transform audience engagement.
+              </p>
+              <div class="blog-mag-meta">
+                <span>4 min read</span>
+                <span class="meta-dot">&bull;</span>
+                <time datetime="2024-06-21">June 21, 2024</time>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bottom Row: Card 1 -->
+          <article class="blog-mag-card blog-mag-card--standard" data-reveal="fade-up" data-delay="200" data-article="Technical Rehearsals: Preventing Run-Of-Show Disasters">
+            <div class="blog-mag-bg-wrap">
+              <img src="assets/mosaic-auditorium.webp" alt="Technical Rehearsals: Preventing Run-Of-Show Disasters" class="blog-mag-bg-img">
+              <div class="blog-mag-gradient"></div>
+            </div>
+            <div class="blog-mag-content">
+              <span class="blog-mag-tag">AV &amp; STAGE</span>
+              <h3 class="blog-mag-title">TECHNICAL REHEARSALS: PREVENTING RUN-OF-SHOW DISASTERS</h3>
+              <div class="blog-mag-meta">
+                <span>5 min read</span>
+                <span class="meta-dot">&bull;</span>
+                <time datetime="2024-06-18">June 18, 2024</time>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bottom Row: Card 2 -->
+          <article class="blog-mag-card blog-mag-card--standard" data-reveal="fade-up" data-delay="300" data-article="The Future Of Hybrid Conferences In 2026">
+            <div class="blog-mag-bg-wrap">
+              <img src="assets/service-meeting-room.webp" alt="The Future Of Hybrid Conferences In 2026" class="blog-mag-bg-img">
+              <div class="blog-mag-gradient"></div>
+            </div>
+            <div class="blog-mag-content">
+              <span class="blog-mag-tag">STRATEGY</span>
+              <h3 class="blog-mag-title">THE FUTURE OF HYBRID CONFERENCES IN 2026</h3>
+              <div class="blog-mag-meta">
+                <span>7 min read</span>
+                <span class="meta-dot">&bull;</span>
+                <time datetime="2024-06-15">June 15, 2024</time>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bottom Row: Card 3 -->
+          <article class="blog-mag-card blog-mag-card--standard" data-reveal="fade-up" data-delay="400" data-article="How To Design Breakout Rooms That Actually Engage">
+            <div class="blog-mag-bg-wrap">
+              <img src="assets/mosaic-cocktail.webp" alt="How To Design Breakout Rooms That Actually Engage" class="blog-mag-bg-img">
+              <div class="blog-mag-gradient"></div>
+            </div>
+            <div class="blog-mag-content">
+              <span class="blog-mag-tag">VENUE PLANNING</span>
+              <h3 class="blog-mag-title">HOW TO DESIGN BREAKOUT ROOMS THAT ACTUALLY ENGAGE</h3>
+              <div class="blog-mag-meta">
+                <span>4 min read</span>
+                <span class="meta-dot">&bull;</span>
+                <time datetime="2024-06-12">June 12, 2024</time>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: MOSAIC SHOWCASE & ENTERTAINMENT (Cream #F4EFE6) ==================== -->
+    <section class="blog-mosaic-section" id="mosaic-section">
+      <div class="container">
+        
+        <!-- Big Tag & Headline -->
+        <div class="blog-mosaic-header" data-reveal="fade-up">
+          <span class="blog-section-tag">// WHY CHOOSE US //</span>
+          <h2 class="blog-mosaic-title">
+            FROM THRILLING CONCERTS TO INSIGHTFUL CONFERENCES,<br>
+            AN UNFORGETTABLE JOURNEY FILLED WITH EXCITEMENT, INSPIRATION,<br>
+            AND ENDLESS POSSIBILITIES.
+          </h2>
+        </div>
+
+        <!-- 2-Column Split Grid -->
+        <div class="blog-mosaic-grid">
+          
+          <!-- Left Column: Banquet Image + Entertainment Content -->
+          <div class="blog-mosaic-left" data-reveal="fade-right">
+            <div class="blog-mosaic-img-card blog-mosaic-img-card--large">
+              <img src="assets/mosaic-banquet.webp" alt="Elegant banquet dinner setup with round tables" class="blog-mosaic-img">
+              <div class="blog-mosaic-img-overlay"></div>
+            </div>
+            <div class="blog-mosaic-entertainment-block">
+              <h3 class="blog-entertainment-heading">WE BRING TOGETHER THE BEST IN ENTERTAINMENT</h3>
+              <p class="blog-entertainment-desc">
+                From world-class performers to state-of-the-art staging, we create an atmosphere of celebration and prestige that will stay with you long after the curtain falls. We believe in crafting events that don't just entertain, but inspire and build lasting connections.
+              </p>
+              <a href="contact.html" class="btn btn-orange btn-pill blog-entertainment-btn">Open all assets</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Meeting Room + Bottom Split (Confetti & Auditorium) -->
+          <div class="blog-mosaic-right" data-reveal="fade-left">
+            <div class="blog-mosaic-img-card blog-mosaic-img-card--top">
+              <img src="assets/service-meeting-room.webp" alt="Executive collaboration meeting room" class="blog-mosaic-img">
+              <div class="blog-mosaic-img-overlay"></div>
+            </div>
+            
+            <div class="blog-mosaic-sub-grid">
+              <div class="blog-mosaic-img-card blog-mosaic-img-card--sub">
+                <img src="assets/blog-confetti-party.webp" alt="Corporate awards gala celebration with falling golden confetti" class="blog-mosaic-img">
+                <div class="blog-mosaic-img-overlay"></div>
+              </div>
+              <div class="blog-mosaic-img-card blog-mosaic-img-card--sub">
+                <img src="assets/mosaic-auditorium.webp" alt="Tiered auditorium theater seats" class="blog-mosaic-img">
+                <div class="blog-mosaic-img-overlay"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: CALL TO ACTION BANNER (Dark Container on Cream) ==================== -->
+    <section class="blog-cta-banner-section" id="blog-cta">
+      <div class="container">
+        <div class="blog-cta-card" data-reveal="fade-up">
+          <div class="blog-cta-left">
+            <h2 class="blog-cta-title">
+              READY TO JOIN<br>
+              THE FUTURE OF TECH?
+            </h2>
+          </div>
+          <div class="blog-cta-right">
+            <p class="blog-cta-desc">
+              Don't miss out on the latest updates and discussions. Join our event network and connect with thousands of event planners.
+            </p>
+            <a href="contact.html" class="btn btn-orange btn-pill blog-cta-btn">Get in touch now</a>
+          </div>
+          <div class="blog-cta-glow"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== GLOBAL FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="STACKLY Home">
+            <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+          </a>
+          <p>Full-service corporate event management agency delivering exceptional live and virtual experiences worldwide.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow us on</h4>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.com">info@stackly.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 STACKLY Corporate Event Management. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Terms of Service</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Security</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ==================== INTERACTIVE QUICK ARTICLE READER MODAL ==================== -->
+  <div class="blog-modal-backdrop" id="blogModalBackdrop" aria-hidden="true">
+    <div class="blog-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+      <button class="blog-modal-close" id="blogModalClose" aria-label="Close article modal">&times;</button>
+      <div class="blog-modal-header">
+        <span class="blog-modal-category" id="blogModalCategory">PRODUCTION</span>
+        <h3 class="blog-modal-title" id="blogModalTitle">Article Title</h3>
+        <div class="blog-modal-meta">
+          <span id="blogModalDate">July 14, 2024</span>
+          <span>&bull;</span>
+          <span id="blogModalReadTime">5 min read</span>
+          <span>&bull;</span>
+          <span>STACKLY Production Team</span>
+        </div>
+      </div>
+      <div class="blog-modal-body" id="blogModalBody">
+        <p class="blog-modal-lead" id="blogModalLead">
+          Field insights and technical takeaways prepared by STACKLY lead producers.
+        </p>
+        <p>
+          Corporate events require high-stakes technical choreography where failure isn't an option. From sound checks 24 hours in advance to multi-track routing protocols, every minute on stage is planned with surgical precision.
+        </p>
+        <div class="blog-modal-quote">
+          "When you rehearse the run-of-show the day before, you turn unforeseen chaos into controlled, repeatable excellence."
+        </div>
+        <p>
+          Discover how our teams coordinate live talent, LED volume walls, lighting cues, and executive teleprompters under one unified technical command.
+        </p>
+      </div>
+      <div class="blog-modal-actions">
+        <a href="contact.html" class="btn btn-orange btn-pill btn-sm">Talk to a Producer</a>
+        <button class="blog-modal-share-btn" onclick="if(navigator.clipboard){navigator.clipboard.writeText(window.location.href);} var _btn=this; var _orig=_btn.innerHTML; _btn.innerHTML='<i class=\'fa-solid fa-check\'></i> Copied!'; setTimeout(function(){ _btn.innerHTML=_orig; }, 2000);">
+          <i class="fa-solid fa-share-nodes"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>

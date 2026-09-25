@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY - Corporate Event Services & Venue Solutions. Four formats, one team held to one standard throughout. Conferences, Galas, Launches, and Incentive Trips.">
+  <title>Services & Venue Solutions | STACKLY Corporate Event Management</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  
+  <!-- Google Fonts: Bebas Neue, Oswald, Inter, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="stylesheet" href="css/service.css?v=6.2">
+</head>
+<body data-page="services">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="STACKLY Corporate Event Management">
+        <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link">HOME</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link active">SERVICES</a></div>
+        <div class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">CONTACT</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-orange btn-pill btn-sm">REGISTER</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="services.html" class="mobile-nav-link active">Services <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="login.html" class="btn btn-orange btn-pill btn-sm" style="width: 100%;">Register Now</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+
+    <!-- ==================== SECTION 1: HERO (Dark #15140F) ==================== -->
+    <section class="svc-hero" id="svc-hero">
+      <!-- Interactive Ambient Particle Canvas -->
+      <canvas class="svc-hero-particles-canvas" id="svcHeroCanvas"></canvas>
+      <div class="svc-hero-ambient-glow"></div>
+
+      <div class="container">
+        <div class="svc-hero-grid">
+          
+          <!-- Hero Left Column -->
+          <div class="svc-hero-content" data-reveal="fade-up">
+            <span class="svc-hero-tag">
+              <span class="tag-live-pulse"></span>
+              SERVICES
+            </span>
+            <h1 class="svc-hero-title">
+              FOUR FORMATS.<br>
+              ONE <span class="highlight-orange glow-text">TEAM HELD TO ONE</span><br>
+              STANDARD THROUGHOUT.
+            </h1>
+            <p class="svc-hero-desc">
+              We don't hand your event to a third party team the moment it's agreed. The team that designed the event, produced it, and stand next to each of the team throughout its course.
+            </p>
+            <div class="svc-hero-actions">
+              <a href="contact.html" class="btn btn-orange btn-pill btn-hero-cta">Inquire</a>
+              <a href="#formats-section" class="svc-hero-link">Compare packages <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Hero Right Column Media -->
+          <div class="svc-hero-media" data-reveal="fade-left">
+            <div class="svc-hero-img-card">
+              <img src="assets/service-hero-auditorium.webp" alt="Packed corporate conference auditorium with engaged delegates and stage presentation" class="svc-hero-img">
+              <div class="svc-hero-img-overlay"></div>
+              <div class="svc-hero-shimmer"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: FOUR FORMATS (Cream #F4EFE6) ==================== -->
+    <section class="svc-formats-section" id="formats-section">
+      <div class="container">
+        <div class="svc-formats-grid">
+          
+          <!-- Format 01 -->
+          <div class="svc-format-card" data-reveal="fade-up" data-delay="0">
+            <div class="svc-format-header">
+              <span class="svc-format-num">01</span>
+              <h3 class="svc-format-title">CONFERENCES</h3>
+            </div>
+            <p class="svc-format-desc">
+              Multi-track, keynote plus breakout sessions, AV specs rehearsed the day before, not the hour of.
+            </p>
+            <div class="svc-format-accent"></div>
+          </div>
+
+          <!-- Format 02 -->
+          <div class="svc-format-card" data-reveal="fade-up" data-delay="100">
+            <div class="svc-format-header">
+              <span class="svc-format-num">02</span>
+              <h3 class="svc-format-title">GALAS</h3>
+            </div>
+            <p class="svc-format-desc">
+              Seating charts, run of show, dynamic AV cues, live talent management executed under one roof.
+            </p>
+            <div class="svc-format-accent"></div>
+          </div>
+
+          <!-- Format 03 -->
+          <div class="svc-format-card" data-reveal="fade-up" data-delay="200">
+            <div class="svc-format-header">
+              <span class="svc-format-num">03</span>
+              <h3 class="svc-format-title">LAUNCHES</h3>
+            </div>
+            <p class="svc-format-desc">
+              Press, media, demo floor management under strict confidentiality agreements.
+            </p>
+            <div class="svc-format-accent"></div>
+          </div>
+
+          <!-- Format 04 -->
+          <div class="svc-format-card" data-reveal="fade-up" data-delay="300">
+            <div class="svc-format-header">
+              <span class="svc-format-num">04</span>
+              <h3 class="svc-format-title">INCENTIVE TRIPS</h3>
+            </div>
+            <p class="svc-format-desc">
+              Group itineraries, luxury hospitality, VIP experiences across destination spots.
+            </p>
+            <div class="svc-format-accent"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: SPLIT DUAL SHOWCASE & REVIEW (Cream #F4EFE6) ==================== -->
+    <section class="svc-showcase-section" id="svc-showcase">
+      <div class="container">
+        <div class="svc-showcase-grid">
+          
+          <!-- Left Visual: Purple Gala Banquet -->
+          <div class="svc-showcase-card" data-reveal="fade-right">
+            <div class="svc-showcase-img-wrap">
+              <img src="assets/service-gala-lighting.webp" alt="Corporate Awards Gala with Dramatic Lighting and Banquet Tables" class="svc-showcase-img">
+              <div class="svc-showcase-overlay"></div>
+              <div class="svc-showcase-tag">GALA &amp; AWARDS SETUP</div>
+            </div>
+          </div>
+
+          <!-- Right Visual: Executive Meeting Room + Floating Review Card -->
+          <div class="svc-showcase-card svc-showcase-card--with-review" data-reveal="fade-left">
+            <div class="svc-showcase-img-wrap">
+              <img src="assets/service-meeting-room.webp" alt="Modern Executive Conference and Corporate Collaboration Session" class="svc-showcase-img">
+              <div class="svc-showcase-overlay"></div>
+            </div>
+
+            <!-- Floating Review Badge -->
+            <div class="svc-floating-review" data-reveal="fade-up" data-delay="200">
+              <div class="svc-review-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="svc-review-quote">
+                "Stackly was swift with every detail from start to finish. Everything ran like clockwork."
+              </p>
+              <div class="svc-review-author">
+                <img src="assets/avatar-1.webp" alt="Marcus Vance" class="svc-review-avatar">
+                <div class="svc-review-meta">
+                  <span class="svc-author-name">Marcus Vance</span>
+                  <span class="svc-author-role">Event Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: WHAT WE OFFER FOR YOU (Cream #F4EFE6) ==================== -->
+    <section class="svc-offer-section" id="what-we-offer">
+      <div class="container">
+        
+        <!-- Offer Section Header -->
+        <div class="svc-offer-header" data-reveal="fade-up">
+          <div class="svc-offer-header-left">
+            <span class="svc-section-tag">// WHAT WE OFFER //</span>
+            <h2 class="svc-section-title">WHAT WE OFFER FOR YOU</h2>
+          </div>
+          <div class="svc-offer-header-right">
+            <p class="svc-offer-header-desc">
+              No matter if you're organizing a corporate event, or meeting, we deliver the know-how and expertise needed to ensure its success.
+            </p>
+            <a href="about.html" class="btn btn-orange btn-pill svc-offer-btn">About us</a>
+          </div>
+        </div>
+
+        <!-- 3 Circular Feature Cards Grid -->
+        <div class="svc-features-grid">
+          
+          <!-- Feature 1 -->
+          <div class="svc-feature-card" data-reveal="fade-up" data-delay="0">
+            <div class="svc-feature-icon-wrap">
+              <div class="svc-feature-icon-circle">
+                <i class="fa-solid fa-users-gear"></i>
+              </div>
+            </div>
+            <h3 class="svc-feature-title">FRIENDLY TEAM</h3>
+            <p class="svc-feature-desc">
+              From conferences to galas, we deliver tailored event planning services for you.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="svc-feature-card" data-reveal="fade-up" data-delay="150">
+            <div class="svc-feature-icon-wrap">
+              <div class="svc-feature-icon-circle">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+            </div>
+            <h3 class="svc-feature-title">UNIQUE SCENARIOS</h3>
+            <p class="svc-feature-desc">
+              Tailor the perfect event with dramatic lighting and projection mapping.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="svc-feature-card" data-reveal="fade-up" data-delay="300">
+            <div class="svc-feature-icon-wrap">
+              <div class="svc-feature-icon-circle">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+            </div>
+            <h3 class="svc-feature-title">UNFORGETTABLE TIME</h3>
+            <p class="svc-feature-desc">
+              Discover unforgettable events that leave lasting impressions on everyone.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: COMPLETE VENUE SOLUTIONS (Cream #F4EFE6) ==================== -->
+    <section class="svc-solutions-section" id="venue-solutions">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="svc-solutions-header" data-reveal="fade-up">
+          <span class="svc-section-tag">// ALL SERVICES //</span>
+          <h2 class="svc-section-title">COMPLETE VENUE SOLUTIONS</h2>
+        </div>
+
+        <!-- 3x2 Alternating Dark/Orange Grid -->
+        <div class="svc-solutions-grid">
+          
+          <!-- Card 1: Pitch Event (Dark) -->
+          <div class="svc-solution-card svc-solution-card--dark" data-reveal="fade-up" data-delay="0">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">PITCH EVENT</h3>
+              <p class="svc-card-desc">
+                Designed for startups focused on pitching to venture capitalists and angel investors to captivate and close high-stakes investments.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+          <!-- Card 2: Product Launch (Dark) -->
+          <div class="svc-solution-card svc-solution-card--dark" data-reveal="fade-up" data-delay="100">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">PRODUCT LAUNCH</h3>
+              <p class="svc-card-desc">
+                Enhance your product launch with expert and creative live execution for unforgettable brand moments and media coverage.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+          <!-- Card 3: Training Session (Orange) -->
+          <div class="svc-solution-card svc-solution-card--orange" data-reveal="fade-up" data-delay="200">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">TRAINING SESSION</h3>
+              <p class="svc-card-desc">
+                Comprehensive professional learning designed to elevate your staff's capabilities, teamwork, and overall productivity.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+          <!-- Card 4: Presentation (Orange) -->
+          <div class="svc-solution-card svc-solution-card--orange" data-reveal="fade-up" data-delay="300">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">PRESENTATION</h3>
+              <p class="svc-card-desc">
+                Visual resonance that makes ideas unforgettable, bringing your message to life for every audience with pristine clarity.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+          <!-- Card 5: Networking Event (Dark) -->
+          <div class="svc-solution-card svc-solution-card--dark" data-reveal="fade-up" data-delay="400">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">NETWORKING EVENT</h3>
+              <p class="svc-card-desc">
+                Network with industry leaders and create valuable relationships that advance your career and personal development.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+          <!-- Card 6: Conference (Dark) -->
+          <div class="svc-solution-card svc-solution-card--dark" data-reveal="fade-up" data-delay="500">
+            <div class="svc-card-inner">
+              <h3 class="svc-card-title">CONFERENCE</h3>
+              <p class="svc-card-desc">
+                Seamless for your conference to guarantee optimum flow, with top-notch AV support from start to finish.
+              </p>
+              <a href="contact.html" class="svc-card-link">
+                Learn more <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="svc-card-glow"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: TESTIMONIALS (Cream #F4EFE6) ==================== -->
+    <section class="svc-testimonials-section" id="testimonials">
+      <div class="container">
+        
+        <div class="svc-testimonials-header" data-reveal="fade-up">
+          <h2 class="svc-section-title text-center">TESTIMONIALS</h2>
+        </div>
+
+        <!-- 3x2 Peach Review Cards Grid -->
+        <div class="svc-testimonials-grid">
+          
+          <!-- Testimonial 1: Stephen -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="0">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-1.webp" alt="Stephen" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              From the planning to the execution, everything was seamless. Our event attendees were blown away by the lighting and acoustic precision!
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">Stephen</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 2: George -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="100">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-2.webp" alt="George" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              Every gathering with them makes a difference. We got the support we needed from start to finish without any hiccups.
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">George</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 3: Al Shayene -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="200">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-3.webp" alt="Al Shayene" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              "The team is extraordinary. The production value, sound, and lighting were beyond anything we've seen in corporate summits."
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">Al Shayene</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 4: Bryan -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="300">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-4.webp" alt="Bryan" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              I was blown away by the energy and execution of the event. Flawless audio, crisp visuals, and exceptional coordination.
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">Bryan</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 5: Eduard -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="400">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-5.webp" alt="Eduard" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              The rehearsals and team made our display absolutely stunning. The flow was consistent and top-notch throughout the week.
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">Eduard</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 6: William -->
+          <div class="svc-testi-card" data-reveal="fade-up" data-delay="500">
+            <div class="svc-testi-avatar-wrap">
+              <img src="assets/avatar-6.webp" alt="William" class="svc-testi-avatar">
+            </div>
+            <p class="svc-testi-quote">
+              The attention to detail was exceptional. Everything from logistics to production made our event a landmark success.
+            </p>
+            <div class="svc-testi-author">
+              <span class="svc-testi-name">William</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: SPECIAL OFFER CTA BANNER (Cream #F4EFE6) ==================== -->
+    <section class="svc-offer-banner-section" id="special-offer">
+      <div class="container">
+        <div class="svc-offer-banner" data-reveal="fade-up">
+          
+          <div class="svc-offer-banner-left">
+            <span class="svc-offer-tag">Special offer</span>
+            <h2 class="svc-offer-headline">
+              BOOK YOUR FIRST EVENT BEFORE MARCH 30, 2026 AND RECEIVE 10 % OFF THE VENUE RENTAL FEE
+            </h2>
+          </div>
+
+          <div class="svc-offer-banner-right">
+            <a href="contact.html" class="btn btn-orange btn-pill svc-offer-cta-btn">Book a slot</a>
+            <a href="contact.html" class="svc-offer-cta-link">Send us a message</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== GLOBAL FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="STACKLY Home">
+            <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+          </a>
+          <p>Full-service corporate event management agency delivering exceptional live and virtual experiences worldwide.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow us on</h4>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.com">info@stackly.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 STACKLY Corporate Event Management. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Terms of Service</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Security</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ==================== INTERACTIVE QUICK INQUIRY MODAL ==================== -->
+  <div class="svc-modal-backdrop" id="svcModalBackdrop" aria-hidden="true">
+    <div class="svc-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="svcModalTitle">
+      <button class="svc-modal-close" id="svcModalClose" aria-label="Close inquiry modal">&times;</button>
+      <div class="svc-modal-header">
+        <span class="svc-modal-badge" id="svcModalBadge">VENUE SOLUTION</span>
+        <h3 class="svc-modal-title" id="svcModalTitle">Inquire About This Format</h3>
+        <p class="svc-modal-subtitle" id="svcModalSubtitle">
+          Tell us about your expected attendee size, date, and technical production requirements.
+        </p>
+      </div>
+      <form class="svc-modal-form" id="svcModalForm" onsubmit="event.preventDefault(); window.submitSvcInquiry();">
+        <div class="svc-form-group">
+          <label for="svcInquiryName">Full Name</label>
+          <input type="text" id="svcInquiryName" class="svc-form-input" placeholder="e.g. Alex Morgan" required>
+        </div>
+        <div class="svc-form-group">
+          <label for="svcInquiryEmail">Corporate Email</label>
+          <input type="email" id="svcInquiryEmail" class="svc-form-input" placeholder="alex@company.com" required>
+        </div>
+        <div class="svc-form-row">
+          <div class="svc-form-group">
+            <label for="svcInquiryFormat">Selected Format</label>
+            <select id="svcInquiryFormat" class="svc-form-input">
+              <option value="Conferences">Conferences</option>
+              <option value="Galas">Galas</option>
+              <option value="Launches">Product Launches</option>
+              <option value="Incentive Trips">Incentive Trips</option>
+              <option value="Pitch Event">Pitch Event</option>
+              <option value="Training Session">Training Session</option>
+              <option value="Presentation">Presentation</option>
+              <option value="Networking Event">Networking Event</option>
+            </select>
+          </div>
+          <div class="svc-form-group">
+            <label for="svcInquiryAttendees">Estimated Attendees</label>
+            <input type="number" id="svcInquiryAttendees" class="svc-form-input" placeholder="50 - 5000" min="10">
+          </div>
+        </div>
+        <div class="svc-form-group">
+          <label for="svcInquiryMsg">Production Scope / Notes</label>
+          <textarea id="svcInquiryMsg" class="svc-form-input svc-form-textarea" rows="3" placeholder="AV specs, multi-track requirements, keynote staging..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-orange btn-pill w-full svc-modal-submit-btn">
+          <span>SEND INQUIRY</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+      <div class="svc-modal-success" id="svcModalSuccess">
+        <div class="svc-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h4>Inquiry Received</h4>
+        <p>Our lead technical producer will review your requirements and reach out within 2 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>

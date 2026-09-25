@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY - Create your account. Set up access to your reporting dashboard and get a capacity plan started.">
+  <title>Signup | STACKLY Corporate Event Management</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  
+  <!-- Google Fonts: Bebas Neue, Oswald, Inter, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="stylesheet" href="css/signup.css?v=6.2">
+</head>
+<body data-page="signup">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <!-- Ambient Light Sparkle Canvas -->
+  <canvas class="auth-ambient-canvas" id="authAmbientCanvas"></canvas>
+
+  <main class="auth-page-wrapper">
+    <div class="auth-card-container signup-card">
+      
+      <!-- ==================== LEFT COLUMN: MEDIA HERO CARD ==================== -->
+      <div class="auth-media-card" id="authMediaCard">
+        <div class="auth-media-bg-wrap">
+          <img src="assets/signup-hero-conference.jpg" alt="Corporate conference attendees" class="auth-media-img">
+          <div class="auth-media-overlay"></div>
+          <div class="auth-media-shimmer"></div>
+        </div>
+
+        <div class="auth-media-content">
+          <h1 class="auth-media-title">
+            <span class="auth-title-line highlight-orange text-shimmer-sweep">CREATE YOUR</span>
+            <span class="auth-title-line highlight-orange text-shimmer-sweep">ACCOUNT</span>
+          </h1>
+          <p class="auth-media-desc">
+            Set up access to your reporting dashboard and get a capacity plan started.
+          </p>
+          <div class="auth-media-action">
+            <a href="index.html" class="btn btn-orange btn-pill auth-back-home-btn">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Back to home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== RIGHT COLUMN: SIGNUP FORM ==================== -->
+      <div class="auth-form-col">
+        <div class="auth-form-inner">
+          
+          <!-- Top Brand Logo -->
+          <div class="auth-brand-wrap">
+            <a href="index.html" class="auth-brand-logo" aria-label="STACKLY Home">
+              <img src="assets/logo.webp" alt="STACKLY" class="auth-brand-logo-img">
+            </a>
+          </div>
+
+          <!-- Form Title -->
+          <h2 class="auth-heading">Signup</h2>
+
+          <!-- Main Signup Form -->
+          <form class="auth-form" id="signupForm" novalidate>
+            
+            <!-- Input Field: Name -->
+            <div class="auth-field-group">
+              <label for="signupName" class="auth-label">Name</label>
+              <div class="auth-input-wrap">
+                <input type="text" id="signupName" class="auth-input" placeholder="Enter your name" required autocomplete="name">
+              </div>
+            </div>
+
+            <!-- Input Field: Email -->
+            <div class="auth-field-group">
+              <label for="signupEmail" class="auth-label">Email</label>
+              <div class="auth-input-wrap">
+                <input type="email" id="signupEmail" class="auth-input" placeholder="Enter your email" required autocomplete="email">
+              </div>
+            </div>
+
+            <!-- Input Field: Password -->
+            <div class="auth-field-group">
+              <label for="signupPassword" class="auth-label">Password</label>
+              <div class="auth-input-wrap">
+                <input type="password" id="signupPassword" class="auth-input" placeholder="Enter your password" required autocomplete="new-password">
+                <button type="button" class="auth-pwd-toggle" id="signupPwdToggle" aria-label="Toggle password visibility">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Input Field: Re-enter password -->
+            <div class="auth-field-group">
+              <label for="signupConfirmPassword" class="auth-label">Re-enter password</label>
+              <div class="auth-input-wrap">
+                <input type="password" id="signupConfirmPassword" class="auth-input" placeholder="Re-enter your password" required autocomplete="new-password">
+                <button type="button" class="auth-pwd-toggle" id="signupConfirmPwdToggle" aria-label="Toggle confirm password visibility">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Checkbox: Terms and Conditions -->
+            <div class="auth-terms-row">
+              <label class="auth-checkbox-label">
+                <input type="checkbox" id="signupTerms" class="auth-checkbox" required>
+                <span class="auth-checkbox-custom"></span>
+                <span class="auth-checkbox-text">I have read and agree to the <a href="terms.html" class="auth-terms-link" target="_blank">Terms and conditions</a></span>
+              </label>
+              <div id="signupTermsError" class="auth-field-error" style="display: none;">Please accept the terms and conditions</div>
+            </div>
+
+            <!-- Submit CTA -->
+            <div class="auth-submit-wrap">
+              <button type="submit" class="btn auth-submit-btn signup-submit-btn" id="signupSubmitBtn">
+                <span>Signup</span>
+              </button>
+            </div>
+
+            <!-- Login Switch Prompt -->
+            <div class="auth-switch-prompt">
+              <span>Already have an account?</span>
+              <a href="login.html" class="auth-switch-link">Login</a>
+            </div>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+              <span class="auth-divider-text">Or continue with</span>
+            </div>
+
+            <!-- Social Logins (Orange Figma Buttons) -->
+            <div class="auth-social-buttons">
+              <!-- Apple Login -->
+              <button type="button" class="btn auth-social-btn btn-social-apple" onclick="window.handleSocialLogin('Apple')">
+                <i class="fa-brands fa-apple social-icon"></i>
+                <span>Login with Apple</span>
+              </button>
+
+              <!-- Google Login -->
+              <button type="button" class="btn auth-social-btn btn-social-google" onclick="window.handleSocialLogin('Google')">
+                <svg viewBox="0 0 24 24" class="google-icon-svg" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                </svg>
+                <span>Login with google</span>
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Master JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>

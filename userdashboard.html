@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY Client Portal - Corporate event management, live run-of-show schedules, production milestones, and budget dossiers.">
+  <title>Client Portal | STACKLY Corporate Event Management</title>
+  <link rel="icon" type="image/png" href="assets/logo.webp">
+
+  <!-- Google Fonts & Font Awesome 6 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=5.7">
+  <link rel="stylesheet" href="css/userdashboard.css?v=5.7">
+</head>
+<body data-page="user-dashboard">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Backdrop for mobile sidebar -->
+    <div class="dash-sidebar-backdrop"></div>
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+        </a>
+        <button class="dash-sidebar-close" aria-label="Close sidebar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <nav class="dash-menu" aria-label="Client Navigation">
+        <a href="#overview" class="dash-menu-item active" data-view="overview"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+        <a href="#my-events" class="dash-menu-item" data-view="my-events"><i class="fa-solid fa-calendar-check"></i> My Events</a>
+        <a href="#book-event" class="dash-menu-item" data-view="book-event"><i class="fa-solid fa-circle-plus"></i> Plan New Event</a>
+        <a href="#schedules" class="dash-menu-item" data-view="schedules"><i class="fa-solid fa-clock"></i> Run-of-Show</a>
+        <a href="#invoices" class="dash-menu-item" data-view="invoices"><i class="fa-solid fa-file-invoice-dollar"></i> Budgets &amp; Invoices</a>
+        <div class="dash-menu-divider"></div>
+        <a href="#profile" class="dash-menu-item" data-view="profile"><i class="fa-solid fa-id-badge"></i> Organization Profile</a>
+        <a href="#settings" class="dash-menu-item" data-view="settings"><i class="fa-solid fa-sliders"></i> Portal Settings</a>
+      </nav>
+
+      <div class="dash-sidebar-bottom">
+        <a href="login.html" class="dash-menu-item logout-btn" role="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN DASHBOARD ==================== -->
+    <main class="dash-main">
+      <!-- Topbar Header -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button class="dash-mobile-toggle" aria-label="Open sidebar"><i class="fa-solid fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Welcome Back, <span class="gold-text user-welcome-name">Marcus Vance</span></h1>
+            <p id="dashViewSubtitle">Track active productions, live run-of-show cue sheets, and venue staging milestones.</p>
+          </div>
+        </div>
+
+        <!-- Mobile Center Brand Logo -->
+        <a href="index.html" class="dash-mobile-brand" aria-label="STACKLY Home">
+          <img src="assets/logo.webp" alt="STACKLY" class="dash-mobile-logo">
+        </a>
+
+        <div class="dash-topbar-actions">
+          <button class="dash-icon-btn dash-notif-btn" aria-label="Notifications" id="userNotifBtn">
+            <i class="fa-solid fa-bell"></i>
+            <span class="dash-notif-count">3</span>
+          </button>
+          <a href="#profile" class="dash-mobile-profile-btn" aria-label="Client Profile">
+            <i class="fa-solid fa-circle-user"></i>
+          </a>
+          <a href="#book-event" class="btn-primary-action dash-topbar-book-btn"><i class="fa-solid fa-plus"></i> Plan New Event</a>
+          <a href="#profile" class="dash-user-badge topbar-user-badge" title="Organization Profile">
+            <div class="dash-user-avatar-wrap">
+              <span class="avatar-initials-badge user-avatar-initials">MV</span>
+            </div>
+            <div class="dash-user-details">
+              <h4 class="user-profile-name">Marcus Vance</h4>
+              <span class="user-profile-email">marcus.vance@apexinnovations.global</span>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <!-- ===================================================================
+           VIEW 1: DASHBOARD OVERVIEW (#overview)
+           =================================================================== -->
+      <div class="dash-view-panel active" id="view-overview">
+        <!-- Executive Welcome Banner -->
+        <section class="dash-welcome-card">
+          <div class="welcome-badge">
+            <i class="fa-solid fa-award"></i> ENTERPRISE CLIENT TIER &bull; APEX GLOBAL INNOVATIONS
+          </div>
+          <h2 class="welcome-title">Production Overview: <span class="gold-text">Q4 Event Portfolio</span></h2>
+          <p class="welcome-desc">You have 3 enterprise productions active in the STACKLY pipeline. Main stage load-in for the Global AI &amp; Cloud Summit begins at ExCeL London in 14 days.</p>
+          <div class="welcome-actions">
+            <button class="btn-welcome-primary" id="btnDownloadBriefPack"><i class="fa-solid fa-download"></i> Master Briefing Pack (PDF)</button>
+            <a href="#schedules" class="btn-welcome-secondary"><i class="fa-solid fa-timeline"></i> View Live Run-of-Show</a>
+          </div>
+        </section>
+
+        <!-- 4 Stat Cards -->
+        <section class="dash-stats-grid">
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Active Productions</span>
+              <strong class="counter-val" data-target="3">3</strong>
+              <small><i class="fa-solid fa-arrow-trend-up"></i> 1 in load-in</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Total Attendees</span>
+              <strong class="counter-val" data-target="3450">3,450</strong>
+              <small><i class="fa-solid fa-users"></i> Across 3 summits</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Next Show Date</span>
+              <strong style="color: var(--color-orange, #FD5301); font-size: 1.8rem;">Oct 24</strong>
+              <small><i class="fa-regular fa-clock"></i> 14 Days to Show</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-stopwatch"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Committed Budget</span>
+              <strong style="color: #00E599; font-size: 1.8rem;">£420,000</strong>
+              <small><i class="fa-solid fa-shield-check"></i> 68% milestone paid</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-vault"></i></div>
+          </div>
+        </section>
+
+        <!-- Featured Event & Quick Actions -->
+        <section class="dash-split-grid">
+          <!-- Upcoming Production Highlight -->
+          <div class="upcoming-drive-card">
+            <span class="section-badge"><i class="fa-solid fa-tower-broadcast"></i> Next Live Production</span>
+            <h3 class="drive-car-name">Global AI &amp; Cloud Summit 2026</h3>
+            <span class="drive-status"><i class="fa-solid fa-circle-dot"></i> Load-In &amp; Rigging Confirmed</span>
+
+            <div class="drive-details-list">
+              <div class="drive-detail-item">
+                <i class="fa-regular fa-calendar"></i>
+                <div>
+                  <span>Dates</span>
+                  <strong>Oct 24 - 26, 2026</strong>
+                </div>
+              </div>
+              <div class="drive-detail-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <span>Venue</span>
+                  <strong>ExCeL London (Hall 1)</strong>
+                </div>
+              </div>
+              <div class="drive-detail-item">
+                <i class="fa-solid fa-users-rays"></i>
+                <div>
+                  <span>Delegates</span>
+                  <strong>1,800 Attendees</strong>
+                </div>
+              </div>
+              <div class="drive-detail-item">
+                <i class="fa-solid fa-headset"></i>
+                <div>
+                  <span>Lead Producer</span>
+                  <strong>Elena Rostova (STACKLY)</strong>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="btn-outline-gold" id="btnContactProducer"><i class="fa-solid fa-paper-plane"></i> Contact Production Lead</button>
+              <a href="#schedules" class="btn-ghost"><i class="fa-solid fa-list-check"></i> Inspect Run-of-Show</a>
+            </div>
+          </div>
+
+          <!-- Quick Actions Box -->
+          <div class="quick-actions-box">
+            <h3>Quick Actions</h3>
+            <div class="actions-list">
+              <a href="#book-event" class="action-btn">
+                <span><i class="fa-solid fa-circle-plus" style="margin-right: 10px; color: var(--color-orange);"></i> Request Production RFP</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+              <a href="#schedules" class="action-btn">
+                <span><i class="fa-solid fa-clock" style="margin-right: 10px; color: var(--color-orange);"></i> Live Cue Sheet &amp; Agendas</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+              <a href="#invoices" class="action-btn">
+                <span><i class="fa-solid fa-receipt" style="margin-right: 10px; color: var(--color-orange);"></i> Budget Dossiers &amp; Receipts</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+              <button class="action-btn" id="btnDownloadRider" style="width: 100%; border: none; text-align: left; background: rgba(255,255,255,0.03);">
+                <span><i class="fa-solid fa-file-pdf" style="margin-right: 10px; color: var(--color-orange);"></i> Download Technical Rider</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Production Milestones Timeline -->
+        <section class="dash-panel-card" style="margin-bottom: 34px;">
+          <div class="panel-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin: 0; text-transform: uppercase;">Production Milestones &bull; Global AI Summit</h3>
+            <span style="font-size: 0.82rem; color: #00E599;"><i class="fa-solid fa-circle-check"></i> 3 of 5 Milestones Complete</span>
+          </div>
+
+          <div class="milestones-track">
+            <div class="milestone-row">
+              <div class="milestone-left">
+                <span class="milestone-status-dot complete"></span>
+                <div>
+                  <div class="milestone-name">Venue Master Contract &amp; Health &amp; Safety Sign-Off</div>
+                  <div class="milestone-date">Completed Sep 15, 2026 &bull; ExCeL London Operations</div>
+                </div>
+              </div>
+              <span class="status-pill live"><i class="fa-solid fa-check"></i> Cleared</span>
+            </div>
+
+            <div class="milestone-row">
+              <div class="milestone-left">
+                <span class="milestone-status-dot complete"></span>
+                <div>
+                  <div class="milestone-name">Curved 4K LED Screen &amp; Audio Truss CAD Staging</div>
+                  <div class="milestone-date">Completed Oct 02, 2026 &bull; STACKLY Engineering</div>
+                </div>
+              </div>
+              <span class="status-pill live"><i class="fa-solid fa-check"></i> Cleared</span>
+            </div>
+
+            <div class="milestone-row">
+              <div class="milestone-left">
+                <span class="milestone-status-dot complete"></span>
+                <div>
+                  <div class="milestone-name">Keynote Speaker Decks &amp; Video Stingers Ingested</div>
+                  <div class="milestone-date">Completed Oct 10, 2026 &bull; Media Production Team</div>
+                </div>
+              </div>
+              <span class="status-pill live"><i class="fa-solid fa-check"></i> Cleared</span>
+            </div>
+
+            <div class="milestone-row">
+              <div class="milestone-left">
+                <span class="milestone-status-dot in-progress"></span>
+                <div>
+                  <div class="milestone-name">VIP Catering Tasting &amp; Executive Seating Plan Finalization</div>
+                  <div class="milestone-date">In Progress &bull; Scheduled Oct 18, 2026 &bull; Apex Delegation</div>
+                </div>
+              </div>
+              <span class="status-pill upcoming"><i class="fa-solid fa-clock"></i> In Progress</span>
+            </div>
+
+            <div class="milestone-row">
+              <div class="milestone-left">
+                <span class="milestone-status-dot pending"></span>
+                <div>
+                  <div class="milestone-name">On-Site Load-In &amp; Technical Dry Run Rehearsal</div>
+                  <div class="milestone-date">Scheduled Oct 23, 2026 (08:00 BST) &bull; Crew Call 45 Technicians</div>
+                </div>
+              </div>
+              <span class="status-pill complete">Queued</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recommended Production Upgrades -->
+        <section style="margin-bottom: 20px;">
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 0 0 6px; text-transform: uppercase;">
+              <i class="fa-solid fa-sparkles" style="color: var(--color-orange);"></i> Recommended Production Enhancements
+            </h3>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Curated for your enterprise tech summits to maximize executive attendee engagement</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            <div class="dash-panel-card" style="display: flex; gap: 16px; align-items: center;">
+              <img src="assets/format-launches.webp" alt="Broadcast Studio" style="width: 110px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(253,83,1,0.3);">
+              <div>
+                <h4 style="font-family: var(--font-heading); font-size: 1.05rem; margin: 0 0 6px; text-transform: uppercase;">Satellite Multi-Cam Live Uplink</h4>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 10px;">Broadcast 4K HDR live streams directly to global satellite feeds and remote attendees.</p>
+                <button class="btn-outline-gold btn-upgrade-feature" data-feature="Satellite Multi-Cam Live Uplink" style="padding: 4px 12px; font-size: 0.78rem;"><i class="fa-solid fa-plus"></i> Add to Production</button>
+              </div>
+            </div>
+
+            <div class="dash-panel-card" style="display: flex; gap: 16px; align-items: center;">
+              <img src="assets/format-conferences.webp" alt="Holo-Podium" style="width: 110px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(253,83,1,0.3);">
+              <div>
+                <h4 style="font-family: var(--font-heading); font-size: 1.05rem; margin: 0 0 6px; text-transform: uppercase;">Interactive Holographic Stage Rig</h4>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 10px;">Render 3D real-time architectural schematics and remote executive holograms on stage.</p>
+                <button class="btn-outline-gold btn-upgrade-feature" data-feature="Holographic Stage Rig" style="padding: 4px 12px; font-size: 0.78rem;"><i class="fa-solid fa-plus"></i> Add to Production</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 2: MY BOOKED EVENTS (#my-events)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-my-events">
+        <div class="filter-toolbar">
+          <div class="filter-pills" id="eventsFilterPills">
+            <button class="filter-pill active" data-filter="all">All Formats (4)</button>
+            <button class="filter-pill" data-filter="conference">Conferences</button>
+            <button class="filter-pill" data-filter="launch">Product Launches</button>
+            <button class="filter-pill" data-filter="gala">Executive Galas</button>
+            <button class="filter-pill" data-filter="incentive">Incentive Retreats</button>
+          </div>
+
+          <div class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="eventSearchInput" placeholder="Search events or venues...">
+          </div>
+        </div>
+
+        <div class="events-grid" id="eventsContainer">
+          <!-- Event 1 -->
+          <article class="event-card" data-category="conference">
+            <div class="event-card-img-wrap">
+              <img src="assets/format-conferences.webp" alt="Global AI Summit" class="event-card-img">
+              <span class="event-card-badge badge-in-prod"><i class="fa-solid fa-tower-broadcast"></i> In Production</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-card-format">Global Tech Summit</span>
+              <h3 class="event-card-title">Global AI &amp; Cloud Summit 2026</h3>
+
+              <div class="event-meta-grid">
+                <div class="event-meta-item"><i class="fa-regular fa-calendar"></i> Oct 24 - 26, 2026</div>
+                <div class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ExCeL London Arena</div>
+                <div class="event-meta-item"><i class="fa-solid fa-users"></i> 1,800 Attendees</div>
+                <div class="event-meta-item"><i class="fa-solid fa-sterling-sign"></i> £185,000 Budget</div>
+              </div>
+
+              <div class="event-progress-wrap">
+                <div class="event-progress-header">
+                  <span>Production Progress</span>
+                  <strong>85%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div class="event-card-footer">
+                <div class="producer-pill">
+                  <img src="assets/avatar-2.webp" alt="Elena Rostova" class="producer-avatar">
+                  <span>Elena Rostova &bull; Lead TD</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="#schedules" class="btn-outline-gold" style="padding: 6px 12px; font-size: 0.78rem;">Run-of-Show</a>
+                  <button class="btn-ghost btn-download-spec" data-event="Global AI & Cloud Summit" style="padding: 6px 12px; font-size: 0.78rem;"><i class="fa-solid fa-file-arrow-down"></i> Pack</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 2 -->
+          <article class="event-card" data-category="launch">
+            <div class="event-card-img-wrap">
+              <img src="assets/format-launches.webp" alt="NextGen Launch" class="event-card-img">
+              <span class="event-card-badge badge-confirmed"><i class="fa-solid fa-circle-check"></i> Confirmed</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-card-format">Product Premiere</span>
+              <h3 class="event-card-title">Apex NextGen Enterprise Keynote</h3>
+
+              <div class="event-meta-grid">
+                <div class="event-meta-item"><i class="fa-regular fa-calendar"></i> Nov 12, 2026</div>
+                <div class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Carrousel du Louvre, Paris</div>
+                <div class="event-meta-item"><i class="fa-solid fa-users"></i> 650 Attendees</div>
+                <div class="event-meta-item"><i class="fa-solid fa-sterling-sign"></i> £115,000 Budget</div>
+              </div>
+
+              <div class="event-progress-wrap">
+                <div class="event-progress-header">
+                  <span>Production Progress</span>
+                  <strong>60%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div class="event-card-footer">
+                <div class="producer-pill">
+                  <img src="assets/avatar-3.webp" alt="Marc Laurent" class="producer-avatar">
+                  <span>Marc Laurent &bull; Stage Director</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="#schedules" class="btn-outline-gold" style="padding: 6px 12px; font-size: 0.78rem;">Run-of-Show</a>
+                  <button class="btn-ghost btn-download-spec" data-event="Apex NextGen Keynote" style="padding: 6px 12px; font-size: 0.78rem;"><i class="fa-solid fa-file-arrow-down"></i> Pack</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 3 -->
+          <article class="event-card" data-category="gala">
+            <div class="event-card-img-wrap">
+              <img src="assets/format-galas.webp" alt="Executive Gala" class="event-card-img">
+              <span class="event-card-badge badge-sourcing"><i class="fa-solid fa-sparkles"></i> Pre-Production</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-card-format">Annual Awards &amp; Gala</span>
+              <h3 class="event-card-title">Apex Global Leadership Honors Gala</h3>
+
+              <div class="event-meta-grid">
+                <div class="event-meta-item"><i class="fa-regular fa-calendar"></i> Dec 08, 2026</div>
+                <div class="event-meta-item"><i class="fa-solid fa-location-dot"></i> The Savoy Ballroom, London</div>
+                <div class="event-meta-item"><i class="fa-solid fa-users"></i> 300 VIP Guests</div>
+                <div class="event-meta-item"><i class="fa-solid fa-sterling-sign"></i> £78,000 Budget</div>
+              </div>
+
+              <div class="event-progress-wrap">
+                <div class="event-progress-header">
+                  <span>Production Progress</span>
+                  <strong>40%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+
+              <div class="event-card-footer">
+                <div class="producer-pill">
+                  <img src="assets/avatar-4.webp" alt="Sophie Dupont" class="producer-avatar">
+                  <span>Sophie Dupont &bull; Hospitality Lead</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="#schedules" class="btn-outline-gold" style="padding: 6px 12px; font-size: 0.78rem;">Run-of-Show</a>
+                  <button class="btn-ghost btn-download-spec" data-event="Leadership Honors Gala" style="padding: 6px 12px; font-size: 0.78rem;"><i class="fa-solid fa-file-arrow-down"></i> Pack</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 4 -->
+          <article class="event-card" data-category="incentive">
+            <div class="event-card-img-wrap">
+              <img src="assets/format-incentive.webp" alt="Incentive Retreat" class="event-card-img">
+              <span class="event-card-badge badge-complete"><i class="fa-solid fa-pen-ruler"></i> In Sourcing</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-card-format">Executive Retreat</span>
+              <h3 class="event-card-title">Leaders Alpine Innovation Retreat</h3>
+
+              <div class="event-meta-grid">
+                <div class="event-meta-item"><i class="fa-regular fa-calendar"></i> Jan 18 - 22, 2027</div>
+                <div class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Badrutt's Palace, St. Moritz</div>
+                <div class="event-meta-item"><i class="fa-solid fa-users"></i> 120 Executives</div>
+                <div class="event-meta-item"><i class="fa-solid fa-sterling-sign"></i> £92,000 Budget</div>
+              </div>
+
+              <div class="event-progress-wrap">
+                <div class="event-progress-header">
+                  <span>Production Progress</span>
+                  <strong>25%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="event-card-footer">
+                <div class="producer-pill">
+                  <img src="assets/avatar-5.webp" alt="Julian Vance" class="producer-avatar">
+                  <span>Julian Vance &bull; Exec Producer</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="#schedules" class="btn-outline-gold" style="padding: 6px 12px; font-size: 0.78rem;">Run-of-Show</a>
+                  <button class="btn-ghost btn-download-spec" data-event="Leaders Alpine Retreat" style="padding: 6px 12px; font-size: 0.78rem;"><i class="fa-solid fa-file-arrow-down"></i> Pack</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 3: PLAN NEW EVENT / RFP (#book-event)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-book-event">
+        <div class="booking-form-box">
+          <div style="margin-bottom: 26px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 16px;">
+            <span class="section-badge"><i class="fa-solid fa-pen-nib"></i> Production RFP Wizard</span>
+            <h2 style="font-family: var(--font-heading); font-size: 1.8rem; margin: 6px 0; text-transform: uppercase;">Commission a New Production</h2>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); margin: 0;">Submit your event parameters to receive a technical rider, CAD staging blueprint, and transparent budget within 24 hours.</p>
+          </div>
+
+          <form id="bookEventForm">
+            <!-- Step 1: Event Title & Format -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="rfpEventTitle">Event Title / Working Codename *</label>
+                <input type="text" id="rfpEventTitle" class="form-control" placeholder="e.g. Apex Global Vision 2027" required>
+              </div>
+              <div class="form-group">
+                <label for="rfpEventFormat">Production Format *</label>
+                <select id="rfpEventFormat" class="form-control" required>
+                  <option value="conference">Global Tech Conference / Summit</option>
+                  <option value="launch">Product Launch &amp; Media Keynote</option>
+                  <option value="gala">Executive Awards &amp; Gala Dinner</option>
+                  <option value="incentive">Luxury Corporate Incentive Retreat</option>
+                  <option value="hybrid">Broadcast Hybrid Multi-Hub Event</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Step 2: Logistics & City -->
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="rfpAttendees">Estimated Attendees *</label>
+                <input type="number" id="rfpAttendees" class="form-control" placeholder="e.g. 1500" min="50" max="50000" required>
+              </div>
+              <div class="form-group">
+                <label for="rfpCity">Target City / Region *</label>
+                <select id="rfpCity" class="form-control" required>
+                  <option value="london">London, United Kingdom</option>
+                  <option value="paris">Paris, France</option>
+                  <option value="zurich">Zurich / Geneva, Switzerland</option>
+                  <option value="singapore">Singapore (Marina Bay)</option>
+                  <option value="newyork">New York, USA</option>
+                  <option value="dubai">Dubai, UAE</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rfpTargetDate">Target Date / Quarter *</label>
+                <input type="date" id="rfpTargetDate" class="form-control" required>
+              </div>
+            </div>
+
+            <!-- Step 3: Production Tier Selection -->
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label>Select Production &amp; Staging Tier</label>
+            </div>
+            <div class="tier-select-cards">
+              <label class="tier-card-option active">
+                <input type="radio" name="productionTier" value="signature" checked>
+                <h4>Signature AV Staging</h4>
+                <p>Curved 4K LED backdrop, line-array concert audio, dynamic lighting rig, and stage management.</p>
+              </label>
+
+              <label class="tier-card-option">
+                <input type="radio" name="productionTier" value="broadcast">
+                <h4>Broadcast Enterprise</h4>
+                <p>Multi-camera 4K broadcast studio, satellite uplink, interactive voting apps, and speaker teleprompters.</p>
+              </label>
+
+              <label class="tier-card-option">
+                <input type="radio" name="productionTier" value="bespoke">
+                <h4>Ultra-Bespoke Immersive</h4>
+                <p>Holographic podiums, kinetic light sculptures, bespoke 3D spatial audio, and Michelin-starred banquet design.</p>
+              </label>
+            </div>
+
+            <!-- Step 4: Special Requirements -->
+            <div class="form-group" style="margin-bottom: 22px;">
+              <label for="rfpNotes">Technical Brief &amp; Special Requirements</label>
+              <textarea id="rfpNotes" class="form-control" rows="4" placeholder="Mention specific VIP requirements, translation booth needs, custom scenic carpentry, or private airport transfers..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="display: flex; justify-content: flex-end; gap: 14px;">
+              <button type="reset" class="btn-ghost">Reset Details</button>
+              <button type="submit" class="btn-primary-action" id="btnSubmitRFP"><i class="fa-solid fa-paper-plane"></i> Transmit Production RFP</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 4: RUN-OF-SHOW & AGENDAS (#schedules)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-schedules">
+        <div class="dash-panel-card" style="margin-bottom: 26px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+            <div>
+              <span class="section-badge"><i class="fa-solid fa-stopwatch"></i> Minute-by-Minute Cue Sheet</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin: 4px 0 0; text-transform: uppercase;">Global AI &amp; Cloud Summit 2026 &bull; Master Run-of-Show</h2>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-outline-gold btn-schedule-day active" data-day="day1">Day 1: Plenary &amp; Keynotes</button>
+              <button class="btn-outline-gold btn-schedule-day" data-day="day2">Day 2: Breakouts &amp; Expo</button>
+              <button class="btn-outline-gold btn-schedule-day" data-day="day3">Day 3: Executive Gala</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="cue-timeline-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Time (BST)</th>
+                  <th>Session / Segment</th>
+                  <th>Stage / Hall</th>
+                  <th>Keynote / Talent</th>
+                  <th>Audio / Visual Cue</th>
+                  <th style="text-align: right;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTableBody">
+                <tr>
+                  <td><span class="cue-time-badge">08:00</span></td>
+                  <td><strong>Executive Delegate Registration &amp; Networking Coffee</strong></td>
+                  <td>Grand Concourse A</td>
+                  <td>Delegate Hostesses</td>
+                  <td>Ambient Jazz acoustic track, digital signage branding loop</td>
+                  <td style="text-align: right;"><span class="status-pill complete">Prepped</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cue-time-badge">09:15</span></td>
+                  <td><strong>Auditorium Chime &amp; 15-Minute Seat Call</strong></td>
+                  <td>Main Arena Hall 1</td>
+                  <td>Voice of God (VOG)</td>
+                  <td>House lights 50%, chime tone, countdown stinger on 360 LED</td>
+                  <td style="text-align: right;"><span class="status-pill complete">Tested</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cue-time-badge">09:30</span></td>
+                  <td><strong>Kinetic Laser &amp; Holographic Opening Symphony</strong></td>
+                  <td>Main Arena Hall 1</td>
+                  <td>Orchestral Trio</td>
+                  <td>Blackout, laser stinger roll, spatial surround sub-bass kick</td>
+                  <td style="text-align: right;"><span class="status-pill live"><i class="fa-solid fa-circle-play"></i> Ready</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cue-time-badge">09:45</span></td>
+                  <td><strong>Opening Keynote: "Autonomous Enterprise at Scale"</strong></td>
+                  <td>Main Arena Hall 1</td>
+                  <td>Dr. Aris Thorne (CEO)</td>
+                  <td>Podium mic active, D3 media server presentation slide deck</td>
+                  <td style="text-align: right;"><span class="status-pill upcoming">Cue Ready</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cue-time-badge">11:00</span></td>
+                  <td><strong>Fireside Panel: Ethical AI Architecture &amp; Governance</strong></td>
+                  <td>Main Arena Hall 1</td>
+                  <td>4 Industry Panelists</td>
+                  <td>4 wireless DPA headset mics live, comfort monitor timer 45m</td>
+                  <td style="text-align: right;"><span class="status-pill upcoming">Standby</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cue-time-badge">12:30</span></td>
+                  <td><strong>VIP Luncheon &amp; Sovereign Cloud Executive Roundtable</strong></td>
+                  <td>The Sovereign Suite</td>
+                  <td>Invited C-Suite</td>
+                  <td>Soft classical audio, custom menu projection mapping</td>
+                  <td style="text-align: right;"><span class="status-pill upcoming">Catering Set</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 5: BUDGETS & INVOICES (#invoices)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-invoices">
+        <section class="dash-stats-grid" style="margin-bottom: 28px;">
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Total Contract Value</span>
+              <strong style="font-size: 1.9rem;">£420,000</strong>
+              <small>Across Q4 Productions</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-file-invoice"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Settled Payments</span>
+              <strong style="color: #00E599; font-size: 1.9rem;">£285,000</strong>
+              <small><i class="fa-solid fa-check"></i> 68% Cleared</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>Upcoming Milestone</span>
+              <strong style="color: var(--color-orange); font-size: 1.9rem;">£135,000</strong>
+              <small>Due Oct 20 (Load-In)</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-calendar-day"></i></div>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="stat-info">
+              <span>VAT Invoices</span>
+              <strong style="font-size: 1.9rem;">4 Available</strong>
+              <small><i class="fa-solid fa-file-pdf"></i> HMRC Compliant</small>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-receipt"></i></div>
+          </div>
+        </section>
+
+        <div class="dash-panel-card">
+          <div class="panel-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 0; text-transform: uppercase;">Production Invoices &amp; Milestone Billing</h3>
+            <button class="btn-outline-gold" id="btnDownloadAllInvoices"><i class="fa-solid fa-download"></i> Download All Invoices (ZIP)</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Invoice ID</th>
+                  <th>Production / Event</th>
+                  <th>Milestone Description</th>
+                  <th>Issued Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code style="color: var(--color-orange);">#STK-2026-089</code></td>
+                  <td>Global AI &amp; Cloud Summit</td>
+                  <td>Venue License &amp; Initial Production Deposit (50%)</td>
+                  <td>Sep 01, 2026</td>
+                  <td><strong>£92,500.00</strong></td>
+                  <td><span class="status-pill live"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-ghost btn-single-invoice" data-id="STK-2026-089" style="padding: 4px 10px; font-size: 0.78rem;"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code style="color: var(--color-orange);">#STK-2026-112</code></td>
+                  <td>Global AI &amp; Cloud Summit</td>
+                  <td>Audio-Visual Rigging, LED Screens &amp; Staging Ingest</td>
+                  <td>Oct 01, 2026</td>
+                  <td><strong>£55,500.00</strong></td>
+                  <td><span class="status-pill live"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-ghost btn-single-invoice" data-id="STK-2026-112" style="padding: 4px 10px; font-size: 0.78rem;"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code style="color: var(--color-orange);">#STK-2026-138</code></td>
+                  <td>Apex NextGen Keynote Paris</td>
+                  <td>Carrousel du Louvre Sourcing &amp; Stage Design</td>
+                  <td>Oct 08, 2026</td>
+                  <td><strong>£69,000.00</strong></td>
+                  <td><span class="status-pill live"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-ghost btn-single-invoice" data-id="STK-2026-138" style="padding: 4px 10px; font-size: 0.78rem;"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code style="color: var(--color-orange);">#STK-2026-174</code></td>
+                  <td>Global AI &amp; Cloud Summit</td>
+                  <td>Final Show Execution, Onsite Crew &amp; Catering Balance</td>
+                  <td>Due Oct 20, 2026</td>
+                  <td><strong>£37,000.00</strong></td>
+                  <td><span class="status-pill upcoming"><i class="fa-solid fa-clock"></i> Scheduled</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn-outline-gold btn-single-invoice" data-id="STK-2026-174" style="padding: 4px 10px; font-size: 0.78rem;"><i class="fa-solid fa-credit-card"></i> Pay Now</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 6: ORGANIZATION PROFILE (#profile)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-profile">
+        <div class="dash-split-grid">
+          <!-- Client Dossier -->
+          <div class="dash-panel-card">
+            <div style="display: flex; gap: 18px; align-items: center; margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <div style="width: 76px; height: 76px; border-radius: 50%; overflow: hidden; border: 2px solid var(--color-orange); flex-shrink: 0;">
+                <span class="avatar-initials-badge user-avatar-initials" style="font-size: 1.6rem; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">MV</span>
+              </div>
+              <div>
+                <h3 class="user-profile-name" style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0 0 4px; text-transform: uppercase;">Marcus Vance</h3>
+                <p style="font-size: 0.88rem; color: var(--color-orange); margin: 0 0 4px; font-weight: 600;">VP Global Events &amp; Marketing</p>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Apex Global Innovations UK Ltd.</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px;">
+                <span style="color: rgba(255,255,255,0.5);">Corporate Email</span>
+                <strong class="user-profile-email" style="color: #FFFFFF;">marcus.vance@apexinnovations.global</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px;">
+                <span style="color: rgba(255,255,255,0.5);">Direct Phone</span>
+                <strong style="color: #FFFFFF;">+44 20 7946 0912</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px;">
+                <span style="color: rgba(255,255,255,0.5);">Headquarters</span>
+                <strong style="color: #FFFFFF;">One Canada Square, Canary Wharf, London</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px;">
+                <span style="color: rgba(255,255,255,0.5);">VAT Number</span>
+                <strong style="color: #FFFFFF;">GB 892 4102 91</strong>
+              </div>
+            </div>
+
+            <button class="btn-primary-action" id="btnEditProfile"><i class="fa-solid fa-pen-to-square"></i> Update Organization Details</button>
+          </div>
+
+          <!-- Authorized Team Roster -->
+          <div class="dash-panel-card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin: 0 0 16px; text-transform: uppercase;">Authorized Event Producers &amp; Delegates</h3>
+            <p style="font-size: 0.84rem; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Colleagues with backstage clearance, briefing pack access, and staging approvals.</p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img src="assets/avatar-2.webp" alt="Elena Rostova" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h5 style="font-family: var(--font-heading); font-size: 0.94rem; margin: 0; color: #FFFFFF;">Elena Rostova</h5>
+                    <span style="font-size: 0.74rem; color: rgba(255,255,255,0.5);">Technical Director &bull; STACKLY Lead</span>
+                  </div>
+                </div>
+                <span class="status-pill live">Lead Producer</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img src="assets/avatar-3.webp" alt="David Sterling" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h5 style="font-family: var(--font-heading); font-size: 0.94rem; margin: 0; color: #FFFFFF;">David Sterling</h5>
+                    <span style="font-size: 0.74rem; color: rgba(255,255,255,0.5);">Brand Experience Director &bull; Apex</span>
+                  </div>
+                </div>
+                <span class="status-pill upcoming">Sign-Off Lead</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img src="assets/avatar-4.webp" alt="Claire Beaumont" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h5 style="font-family: var(--font-heading); font-size: 0.94rem; margin: 0; color: #FFFFFF;">Claire Beaumont</h5>
+                    <span style="font-size: 0.74rem; color: rgba(255,255,255,0.5);">VIP Protocol Lead &bull; Apex</span>
+                  </div>
+                </div>
+                <span class="status-pill complete">Guest Logistics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 7: PORTAL SETTINGS (#settings)
+           =================================================================== -->
+      <div class="dash-view-panel" id="view-settings">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="settings-group">
+            <h3>Real-Time Production Notifications</h3>
+            <div class="settings-row">
+              <div>
+                <strong style="display: block; font-size: 0.92rem; color: #FFFFFF;">Run-of-Show Live Stage Cues</strong>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Receive instant alerts when a speaker goes live on stage or run times adjust.</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <strong style="display: block; font-size: 0.92rem; color: #FFFFFF;">Milestone &amp; Rigging Sign-Offs</strong>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Notify when structural trussing, council permits, or LED staging clears inspection.</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <strong style="display: block; font-size: 0.92rem; color: #FFFFFF;">Financial &amp; Milestone Billing Alerts</strong>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Receive PDF invoices and payment schedule receipts via email.</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3>Security &amp; Backstage Access</h3>
+            <div class="settings-row">
+              <div>
+                <strong style="display: block; font-size: 0.92rem; color: #FFFFFF;">Two-Factor Authentication (2FA)</strong>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Mandatory for releasing live satellite broadcasts or confidential speaker slide decks.</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <strong style="display: block; font-size: 0.92rem; color: #FFFFFF;">Digital NFC Delegate Badge Sync</strong>
+                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">Auto-provision digital turnstile passes for registered corporate attendees.</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <button class="btn-primary-action" id="btnSaveSettings"><i class="fa-solid fa-floppy-disk"></i> Save Portal Preferences</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="dash-toast" id="dashToast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Action completed successfully.</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>

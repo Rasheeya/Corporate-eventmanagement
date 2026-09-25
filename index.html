@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY - Full-service corporate event management agency delivering exceptional live and virtual conferences, galas, product launches, and incentive trips worldwide.">
+  <title>STACKLY | Corporate Event Management Agency</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  
+  <!-- Google Fonts: Bebas Neue, Oswald, Inter, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="stylesheet" href="css/index.css?v=6.2">
+</head>
+<body data-page="home">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="STACKLY Corporate Event Management">
+        <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link active">HOME</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link">SERVICES</a></div>
+        <div class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">CONTACT</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-orange btn-pill btn-sm">REGISTER</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="services.html" class="mobile-nav-link">Services <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="login.html" class="btn btn-orange btn-pill btn-sm" style="width: 100%;">Register Now</a>
+    </div>
+  </aside>
+
+  <!-- ==================== 1. HERO SECTION ==================== -->
+  <section class="hero-event-section" id="hero">
+    <!-- Ambient Floating Particles Canvas -->
+    <canvas class="hero-particles-canvas" id="heroParticlesCanvas"></canvas>
+
+    <div class="container">
+      <div class="hero-event-grid">
+        
+        <!-- Left text content -->
+        <div class="hero-event-text" data-reveal="fade-up">
+          <span class="hero-eyebrow">FULL-SERVICE EVENT AGENCY</span>
+          <h1 class="hero-event-title">
+            WE BUILD THE ROOM, RUN THE SHOW, AND <span class="highlight-badge">ANSWER FOR EVERY</span> MINUTE OF IT.
+          </h1>
+          <p class="hero-event-desc">
+            From intimate executive roundtables of twenty to international summits of ten thousand, we take responsibility for every cable, every cue, and every attendee impression.
+          </p>
+          <div class="hero-event-actions">
+            <a href="contact.html" class="btn btn-orange btn-pill btn-lg">WORK WITH US</a>
+          </div>
+        </div>
+
+        <!-- Right image frame -->
+        <div class="hero-event-media" data-reveal="fade-left">
+          <div class="hero-image-frame hero-slider" id="heroSlider">
+            <div class="hero-slider-track">
+              <div class="hero-slide active">
+                <img src="assets/hero-ballroom.webp" alt="STACKLY Luxury Corporate Event Ballroom Production" class="hero-img" fetchpriority="high">
+              </div>
+              <div class="hero-slide">
+                <img src="assets/service-hero-auditorium.webp" alt="STACKLY Global Summit Keynote Auditorium" class="hero-img" loading="lazy">
+              </div>
+              <div class="hero-slide">
+                <img src="assets/mosaic-conference.webp" alt="STACKLY Immersive Tech Conference Production" class="hero-img" loading="lazy">
+              </div>
+            </div>
+            <!-- Slider Indicators -->
+            <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
+              <button class="hero-slider-dot active" data-slide="0" aria-label="Slide 1"></button>
+              <button class="hero-slider-dot" data-slide="1" aria-label="Slide 2"></button>
+              <button class="hero-slider-dot" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. FOUR FORMATS WE KNOW COLD ==================== -->
+  <section class="formats-section" id="formats">
+    <div class="container">
+      <div data-reveal="fade-up">
+        <span class="section-tag-orange">WHAT WE PRODUCE</span>
+        <h2 class="formats-title">FOUR FORMATS WE KNOW COLD</h2>
+      </div>
+
+      <div class="formats-grid" data-reveal="fade-up">
+        
+        <!-- Format 01: Conferences -->
+        <div class="format-card format-theme-orange">
+          <div class="format-card-media-wrap">
+            <div class="format-card-media">
+              <img src="assets/format-conferences.webp" alt="Conferences Production" loading="lazy">
+              <div class="format-card-overlay"></div>
+              <div class="format-badge-floating">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <span>SUMMITS</span>
+              </div>
+            </div>
+          </div>
+          <div class="format-card-header">
+            <span class="format-num">01</span>
+            <span class="format-tag-pill">ARENAS & LIVE</span>
+          </div>
+          <h3 class="format-heading">CONFERENCES</h3>
+          <p class="format-desc">Multi-track programming, keynotes, live streaming, exhibition halls, and flawless technical execution.</p>
+          <div class="format-explore-link">
+            <span>EXPLORE SPECS</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Format 02: Galas -->
+        <div class="format-card format-theme-amethyst">
+          <div class="format-card-media-wrap">
+            <div class="format-card-media">
+              <img src="assets/format-galas.webp" alt="Corporate Galas Production" loading="lazy">
+              <div class="format-card-overlay"></div>
+              <div class="format-badge-floating">
+                <i class="fa-solid fa-champagne-glasses"></i>
+                <span>BLACK-TIE</span>
+              </div>
+            </div>
+          </div>
+          <div class="format-card-header">
+            <span class="format-num">02</span>
+            <span class="format-tag-pill">AWARDS & VIP</span>
+          </div>
+          <h3 class="format-heading">GALAS</h3>
+          <p class="format-desc">Black-tie awards, anniversary milestones, high-stakes fundraisers, and immersive celebratory experiences.</p>
+          <div class="format-explore-link">
+            <span>EXPLORE SPECS</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Format 03: Launches -->
+        <div class="format-card format-theme-cyan">
+          <div class="format-card-media-wrap">
+            <div class="format-card-media">
+              <img src="assets/format-launches.webp" alt="Product Launches" loading="lazy">
+              <div class="format-card-overlay"></div>
+              <div class="format-badge-floating">
+                <i class="fa-solid fa-rocket"></i>
+                <span>REVEALS</span>
+              </div>
+            </div>
+          </div>
+          <div class="format-card-header">
+            <span class="format-num">03</span>
+            <span class="format-tag-pill">TECH & PRESS</span>
+          </div>
+          <h3 class="format-heading">LAUNCHES</h3>
+          <p class="format-desc">Product reveals, press events, brand activations, and high-impact media moments engineered for global press.</p>
+          <div class="format-explore-link">
+            <span>EXPLORE SPECS</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Format 04: Incentive Trips -->
+        <div class="format-card format-theme-emerald">
+          <div class="format-card-media-wrap">
+            <div class="format-card-media">
+              <img src="assets/format-incentive.webp" alt="Incentive Trips" loading="lazy">
+              <div class="format-card-overlay"></div>
+              <div class="format-badge-floating">
+                <i class="fa-solid fa-compass"></i>
+                <span>RETREATS</span>
+              </div>
+            </div>
+          </div>
+          <div class="format-card-header">
+            <span class="format-num">04</span>
+            <span class="format-tag-pill">EXPEDITIONS</span>
+          </div>
+          <h3 class="format-heading">INCENTIVE TRIPS</h3>
+          <p class="format-desc">Luxury retreats, team expeditions, bespoke itineraries, and executive reward travel designed to inspire.</p>
+          <div class="format-explore-link">
+            <span>EXPLORE SPECS</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. CASE STUDY SPOTLIGHT ==================== -->
+  <section class="case-study-section" id="case-study">
+    <div class="container">
+      <div class="case-study-grid">
+        
+        <!-- Left Overlapping Images -->
+        <div class="case-study-media" data-reveal="fade-right">
+          <img src="assets/case-study-top.webp" alt="Executive Workshop Audience" class="case-study-img-top" loading="lazy">
+          <img src="assets/case-study-speaker.webp" alt="Keynote Speaker Addressing Panel" class="case-study-img-bottom" loading="lazy">
+        </div>
+
+        <!-- Right Content & Stats -->
+        <div class="case-study-content" data-reveal="fade-left">
+          <span class="section-tag-orange">41 DAYS IN THE MAKING</span>
+          <h2 class="case-study-title">A THREE-DAY SUMMIT REBUILT IN 41 DAYS AFTER THE VENUE FELL THROUGH</h2>
+          <p class="case-study-desc">
+            When a premier venue abruptly cancelled 41 days before kick-off, our rapid-response team secured a backup space, re-engineered the floor plan, renegotiated vendor contracts, and executed a seamless experience without a single attendee noticing a delay.
+          </p>
+
+          <div class="case-stats-row">
+            <div class="case-stat-item">
+              <span class="case-stat-num count-up" data-target="41">0</span>
+              <span class="case-stat-label">DAYS FROM BRIEF TO EXECUTION</span>
+            </div>
+            <div class="case-stat-item">
+              <span class="case-stat-num count-up" data-target="840">0</span>
+              <span class="case-stat-label">ATTENDEES DELIVERED WITHOUT INCIDENT</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. STATEMENT & MOSAIC SECTION ==================== -->
+  <section class="mosaic-section" id="gallery">
+    <div class="container">
+      
+      <div data-reveal="fade-up">
+        <span class="section-tag-orange">IN THE FIELD</span>
+        <h2 class="mosaic-banner-title">
+          FROM THRILLING CONCEPTS TO INSIGHTFUL CONFERENCES, AN UNFORGETTABLE JOURNEY FILLED WITH EXCITEMENT, INSPIRATION, AND ENDLESS POSSIBILITIES.
+        </h2>
+      </div>
+
+      <div class="mosaic-grid">
+        
+        <!-- Left Column: Banquet & Entertainment -->
+        <div class="mosaic-col-left" data-reveal="fade-up">
+          <img src="assets/mosaic-banquet.webp" alt="Banquet Hall Production" class="mosaic-img-primary" loading="lazy">
+          <h3 class="mosaic-subheading">WE BRING TOGETHER THE BEST IN ENTERTAINMENT</h3>
+          <p class="mosaic-text">
+            From award-winning headline acts to cutting-edge experiential installations, we curate unforgettable entertainment that aligns seamlessly with your brand messaging and event objectives.
+          </p>
+          <div>
+            <a href="services.html" class="btn btn-orange btn-pill">SHOW ALL SERVICES</a>
+          </div>
+        </div>
+
+        <!-- Right Column: Conference & 2 Sub-images -->
+        <div class="mosaic-col-right" data-reveal="fade-up" style="transition-delay: 0.15s;">
+          <img src="assets/mosaic-conference.webp" alt="Global Conference Assembly" class="mosaic-img-wide" loading="lazy">
+          <div class="mosaic-dual-row">
+            <img src="assets/mosaic-cocktail.webp" alt="Networking Cocktail Celebration" class="mosaic-img-small" loading="lazy">
+            <img src="assets/mosaic-auditorium.webp" alt="Auditorium Seating" class="mosaic-img-small" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. PROCESS: FIRST CALL TO LAST TOAST ==================== -->
+  <!-- ==================== 5. PROCESS: FIRST CALL TO LAST TOAST ==================== -->
+  <section class="process-section" id="process">
+    <div class="container">
+      
+      <div class="process-header" data-reveal="fade-up">
+        <div class="process-tag-pill">
+          <i class="fa-solid fa-bolt-lightning"></i>
+          <span>HOW IT WORKS</span>
+        </div>
+        <h2 class="process-title">FROM FIRST CALL <span class="highlight-orange">TO LAST TOAST</span></h2>
+        <p class="process-subtitle">A battle-tested production methodology ensuring zero margin of error across every second of your event.</p>
+      </div>
+
+      <div class="process-grid">
+        
+        <!-- Left: Architectural Showcase Frame with Floating Telemetry Badges -->
+        <div class="process-showcase-container" data-reveal="fade-right">
+          <div class="process-arch-card">
+            <div class="process-arch-wrap">
+              <img src="assets/process-planner.webp" alt="STACKLY Event Production Director" class="process-arch-img" loading="lazy">
+              
+              <!-- Floating Telemetry Badge Top -->
+              <div class="process-floating-badge badge-top">
+                <span class="live-dot-pulse"></span>
+                <div class="badge-text-group">
+                  <span class="badge-headline">LIVE SHOW CALLING</span>
+                  <span class="badge-sub">Direct stage cueing</span>
+                </div>
+              </div>
+
+              <!-- Floating Telemetry Badge Bottom -->
+              <div class="process-floating-badge badge-bottom">
+                <div class="badge-icon-wrap">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="badge-text-group">
+                  <span class="badge-headline">100% RUN-OF-SHOW</span>
+                  <span class="badge-sub">Zero-downtime SLA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Director Sub-Bar -->
+            <div class="process-director-bar">
+              <div class="director-avatar-mini">
+                <i class="fa-solid fa-user-tie"></i>
+              </div>
+              <div class="director-info">
+                <span class="director-title">LEAD PRODUCTION DESK</span>
+                <span class="director-desc">Dedicated Senior Show Producer</span>
+              </div>
+              <span class="director-badge">CERTIFIED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 4 Luxury Interactive Milestone Cards (2x2) -->
+        <div class="process-steps-grid" data-reveal="fade-left">
+          
+          <div class="process-step-card">
+            <div class="step-card-accent"></div>
+            <div class="step-card-header">
+              <span class="step-num-badge">01</span>
+              <div class="step-icon-box">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+            </div>
+            <div class="step-card-body">
+              <h3 class="step-title">BRIEF</h3>
+              <p class="step-desc">We define your strategic objectives, audience profile, and non-negotiables before a single venue is explored.</p>
+            </div>
+            <div class="step-card-footer">
+              <span class="step-deliverable-pill">
+                <i class="fa-solid fa-circle-check"></i> Scope & Feasibility
+              </span>
+            </div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-accent"></div>
+            <div class="step-card-header">
+              <span class="step-num-badge">02</span>
+              <div class="step-icon-box">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+            </div>
+            <div class="step-card-body">
+              <h3 class="step-title">SOURCE</h3>
+              <p class="step-desc">Rigorous RFP process across venues, AV suppliers, caterers, and tech partners for optimal contractual terms.</p>
+            </div>
+            <div class="step-card-footer">
+              <span class="step-deliverable-pill">
+                <i class="fa-solid fa-circle-check"></i> Vendor Procurement
+              </span>
+            </div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-accent"></div>
+            <div class="step-card-header">
+              <span class="step-num-badge">03</span>
+              <div class="step-icon-box">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+            </div>
+            <div class="step-card-body">
+              <h3 class="step-title">PRODUCE</h3>
+              <p class="step-desc">Complete design of floor plans, run of shows, production schedules, CAD rigs, and risk mitigation protocols.</p>
+            </div>
+            <div class="step-card-footer">
+              <span class="step-deliverable-pill">
+                <i class="fa-solid fa-circle-check"></i> 3D CAD & Cue Sheets
+              </span>
+            </div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-accent"></div>
+            <div class="step-card-header">
+              <span class="step-num-badge">04</span>
+              <div class="step-icon-box">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+            </div>
+            <div class="step-card-body">
+              <h3 class="step-title">RUN IT</h3>
+              <p class="step-desc">On-site command centre running minute-by-minute cues, VIP management, telemetry, and live problem resolution.</p>
+            </div>
+            <div class="step-card-footer">
+              <span class="step-deliverable-pill">
+                <i class="fa-solid fa-circle-check"></i> Command Hub & Show Call
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. CROWD BANNER & KEY METRICS ==================== -->
+  <section class="crowd-stats-section" id="stats">
+    
+    <!-- Full-width Panoramic Crowd Banner -->
+    <div class="crowd-banner-wrap" data-reveal="scale-up">
+      <img src="assets/crowd-banner.webp" alt="Massive Corporate Summit Audience" class="crowd-banner-img" loading="lazy">
+    </div>
+
+    <!-- 4 Stats in a row -->
+    <div class="container">
+      <div class="crowd-stats-grid" data-reveal="fade-up">
+        
+        <div class="crowd-stat-card">
+          <span class="crowd-stat-val count-up" data-target="340" data-suffix="+">0</span>
+          <span class="crowd-stat-desc">EVENTS RUN SEAMLESSLY</span>
+        </div>
+
+        <div class="crowd-stat-card">
+          <span class="crowd-stat-val count-up" data-target="99" data-suffix="%">0</span>
+          <span class="crowd-stat-desc">ON-TIME RUN-OF-SHOW EXECUTION</span>
+        </div>
+
+        <div class="crowd-stat-card">
+          <span class="crowd-stat-val count-up" data-target="12">0</span>
+          <span class="crowd-stat-desc">COUNTRIES PRODUCED IN</span>
+        </div>
+
+        <div class="crowd-stat-card">
+          <span class="crowd-stat-val count-up" data-target="0">0</span>
+          <span class="crowd-stat-desc">CLIENTS WHO HAD TO APOLOGIZE ON STAGE</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==================== 7. TESTIMONIALS SECTION (SINGLE LINE LOOP MODE) ==================== -->
+  <section class="testimonials-event-section" id="testimonials">
+    <div class="container">
+      <div data-reveal="fade-up">
+        <h2 class="testimonials-event-title">TESTIMONIALS</h2>
+      </div>
+    </div>
+
+    <!-- Single Line Loop Slider Track -->
+    <div class="testimonials-loop-container" data-reveal="fade-up">
+      <div class="testimonials-loop-track">
+        <!-- Group 1: Original 6 Testimonial Cards -->
+        <div class="testimonials-track-group">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-1.webp" alt="Elena Rostova" class="testimonial-avatar">
+            <p class="testimonial-quote">"Stackly took our annual summit from a disjointed convention to a world-class broadcast experience. Flawless AV, immaculate timing, and our attendees were raving."</p>
+            <span class="testimonial-author">— Elena Rostova, VP Marketing</span>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-2.webp" alt="David Sterling" class="testimonial-avatar">
+            <p class="testimonial-quote">"When our headline keynote got stranded in Frankfurt 6 hours before showtime, Stackly had a satellite broadcast link and backup stage setup ready in 40 minutes."</p>
+            <span class="testimonial-author">— David Sterling, Chief People Officer</span>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-3.webp" alt="Marcus Vance" class="testimonial-avatar">
+            <p class="testimonial-quote">"The most dependable production team in Europe. From contract negotiation to stage cueing, they treated our budget with discipline and our brand with absolute precision."</p>
+            <span class="testimonial-author">— Marcus Vance, Executive Director</span>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-4.webp" alt="Chloe Laurent" class="testimonial-avatar">
+            <p class="testimonial-quote">"Our 20th anniversary gala had over 600 VIPs and live international entertainment. Stackly managed the entire production without a single hiccup. Spectacular work."</p>
+            <span class="testimonial-author">— Chloe Laurent, Head of Brand Experience</span>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-5.webp" alt="Julian Thorne" class="testimonial-avatar">
+            <p class="testimonial-quote">"Their rapid response team saved our product launch. Within 48 hours they re-engineered the audio-visual architecture for an entirely new venue seamlessly."</p>
+            <span class="testimonial-author">— Julian Thorne, Chief Operating Officer</span>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-6.webp" alt="Priya Patel" class="testimonial-avatar">
+            <p class="testimonial-quote">"Stackly’s run-of-show precision is unmatched. Our global partners noted that it was the most engaging, timely conference they had ever attended in ten years."</p>
+            <span class="testimonial-author">— Priya Patel, Global Events Director</span>
+          </div>
+        </div>
+
+        <!-- Group 2: Duplicate 6 Testimonial Cards for Seamless 100% Infinite Loop -->
+        <div class="testimonials-track-group" aria-hidden="true">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-1.webp" alt="Elena Rostova" class="testimonial-avatar">
+            <p class="testimonial-quote">"Stackly took our annual summit from a disjointed convention to a world-class broadcast experience. Flawless AV, immaculate timing, and our attendees were raving."</p>
+            <span class="testimonial-author">— Elena Rostova, VP Marketing</span>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-2.webp" alt="David Sterling" class="testimonial-avatar">
+            <p class="testimonial-quote">"When our headline keynote got stranded in Frankfurt 6 hours before showtime, Stackly had a satellite broadcast link and backup stage setup ready in 40 minutes."</p>
+            <span class="testimonial-author">— David Sterling, Chief People Officer</span>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-3.webp" alt="Marcus Vance" class="testimonial-avatar">
+            <p class="testimonial-quote">"The most dependable production team in Europe. From contract negotiation to stage cueing, they treated our budget with discipline and our brand with absolute precision."</p>
+            <span class="testimonial-author">— Marcus Vance, Executive Director</span>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-4.webp" alt="Chloe Laurent" class="testimonial-avatar">
+            <p class="testimonial-quote">"Our 20th anniversary gala had over 600 VIPs and live international entertainment. Stackly managed the entire production without a single hiccup. Spectacular work."</p>
+            <span class="testimonial-author">— Chloe Laurent, Head of Brand Experience</span>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-5.webp" alt="Julian Thorne" class="testimonial-avatar">
+            <p class="testimonial-quote">"Their rapid response team saved our product launch. Within 48 hours they re-engineered the audio-visual architecture for an entirely new venue seamlessly."</p>
+            <span class="testimonial-author">— Julian Thorne, Chief Operating Officer</span>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="testimonial-peach-card">
+            <img src="assets/avatar-6.webp" alt="Priya Patel" class="testimonial-avatar">
+            <p class="testimonial-quote">"Stackly’s run-of-show precision is unmatched. Our global partners noted that it was the most engaging, timely conference they had ever attended in ten years."</p>
+            <span class="testimonial-author">— Priya Patel, Global Events Director</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. STAY INFORMED NEWSLETTER CARD ==================== -->
+  <section class="newsletter-event-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-dark-card" data-reveal="fade-up">
+        
+        <div class="newsletter-info">
+          <h2 class="newsletter-title">STAY INFORMED ABOUT UPCOMING EVENTS</h2>
+          <p class="newsletter-desc">Subscribe to our event production insights, trend forecasts, and behind-the-scenes case studies delivered monthly.</p>
+        </div>
+
+        <form class="newsletter-form-box" id="eventNewsletterForm">
+          <div class="newsletter-inputs">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn btn-orange btn-pill">SUBSCRIBE</button>
+          </div>
+          <p class="newsletter-privacy">We care about your privacy. Unsubscribe at any time.</p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 9. GLOBAL FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="STACKLY Home">
+            <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+          </a>
+          <p>Full-service corporate event management agency delivering exceptional live and virtual experiences worldwide.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow us on</h4>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.com">info@stackly.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 STACKLY Corporate Event Management. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Terms of Service</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Security</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Master JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>

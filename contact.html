@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STACKLY - Tell us your volumes, we'll tell you what it takes. Contact our corporate event production team in Bengaluru and London.">
+  <title>Contact Us | STACKLY Corporate Event Management</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  
+  <!-- Google Fonts: Bebas Neue, Oswald, Inter, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="stylesheet" href="css/contact.css?v=6.2">
+</head>
+<body data-page="contact">
+
+  <!-- Site Preloader Animation -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-pulse"></div>
+        <img src="assets/logo.webp" alt="STACKLY" class="preloader-logo">
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-tagline">EXPERIENCE EXCEPTIONAL</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="STACKLY Corporate Event Management">
+        <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link">HOME</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">ABOUT</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link">SERVICES</a></div>
+        <div class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link active">CONTACT</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-orange btn-pill btn-sm">REGISTER</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="services.html" class="mobile-nav-link">Services <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link active">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="login.html" class="btn btn-orange btn-pill btn-sm" style="width: 100%;">Register Now</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+
+    <!-- ==================== SECTION 1: HERO (Dark #15140F) ==================== -->
+    <section class="contact-hero" id="contact-hero">
+      <!-- Ambient Interactive Particle Canvas -->
+      <canvas class="contact-hero-particles-canvas" id="contactHeroCanvas"></canvas>
+      <div class="contact-hero-ambient-glow"></div>
+
+      <div class="container">
+        <div class="contact-hero-grid">
+          
+          <!-- Hero Left Column -->
+          <div class="contact-hero-content" data-reveal="fade-up">
+            <h1 class="contact-hero-title">
+              TELL US YOUR VOLUMES.<br>
+              WE'LL TELL YOU <span class="highlight-orange glow-text text-shimmer-sweep">WHAT IT TAKES.</span>
+            </h1>
+            <p class="contact-hero-desc">
+              Most conversations start with a 20-minute call — no sales deck, just questions about what you actually need run.
+            </p>
+            <div class="contact-hero-actions">
+              <a href="#contact-form-section" class="btn btn-orange btn-pill btn-hero-cta">Contact us</a>
+            </div>
+          </div>
+
+          <!-- Hero Right Column Media -->
+          <div class="contact-hero-media" data-reveal="fade-left">
+            <div class="contact-hero-img-card">
+              <img src="assets/contact-hero-support.webp" alt="Friendly event coordinator wearing headset smiling in modern corporate office" class="contact-hero-img">
+              <div class="contact-hero-img-overlay"></div>
+              <div class="contact-hero-shimmer"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: GET STARTED & CONTACT FORM (Cream #F4EFE6) ==================== -->
+    <section class="contact-form-section" id="contact-form-section">
+      <div class="container">
+        <div class="contact-main-grid">
+          
+          <!-- Left Column: Contact Info Blocks -->
+          <div class="contact-info-col" data-reveal="fade-right">
+            <div class="contact-info-header">
+              <h2 class="contact-info-title">LET'S GET THIS STARTED</h2>
+              <p class="contact-info-desc">
+                Contact us to book the ideal venue for your event. Our team will assist in planning every detail for success.
+              </p>
+            </div>
+
+            <div class="contact-blocks-list">
+              
+              <!-- Block 1: Email -->
+              <div class="contact-info-block" data-reveal="fade-up" data-delay="100">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-block-text">
+                  <h4 class="contact-block-heading">SEND AN EMAIL</h4>
+                  <p class="contact-block-detail">
+                    <a href="mailto:info@stackly.com">info@stackly.com</a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Block 2: Phone -->
+              <div class="contact-info-block" data-reveal="fade-up" data-delay="200">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-block-text">
+                  <h4 class="contact-block-heading">JUST CALL US</h4>
+                  <p class="contact-block-detail">
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Block 3: Location Address -->
+              <div class="contact-info-block" data-reveal="fade-up" data-delay="300">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-block-text">
+                  <h4 class="contact-block-heading">COME VISIT US</h4>
+                  <p class="contact-block-detail contact-address-text">
+                    MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Dark Form Card -->
+          <div class="contact-form-col" data-reveal="fade-left">
+            <div class="contact-form-card" id="contactCard">
+              <h3 class="contact-form-title">Fill The Form Below</h3>
+              
+              <form class="contact-form" id="contactMainForm" onsubmit="event.preventDefault(); window.handleContactSubmit();">
+                <div class="contact-inputs-grid">
+                  
+                  <!-- Input: Name -->
+                  <div class="contact-input-wrap">
+                    <input type="text" id="contactName" class="contact-input" placeholder="Your name" required>
+                  </div>
+
+                  <!-- Input: Email -->
+                  <div class="contact-input-wrap">
+                    <input type="email" id="contactEmail" class="contact-input" placeholder="Your Email" required>
+                  </div>
+
+                  <!-- Input: Phone -->
+                  <div class="contact-input-wrap">
+                    <input type="tel" id="contactPhone" class="contact-input" placeholder="Phone">
+                  </div>
+
+                  <!-- Input: Business Type -->
+                  <div class="contact-input-wrap">
+                    <input type="text" id="contactBusinessType" class="contact-input" placeholder="Business Type">
+                  </div>
+
+                  <!-- Input: Company -->
+                  <div class="contact-input-wrap">
+                    <input type="text" id="contactCompany" class="contact-input" placeholder="Company">
+                  </div>
+
+                  <!-- Input: Location -->
+                  <div class="contact-input-wrap">
+                    <input type="text" id="contactLocation" class="contact-input" placeholder="Location">
+                  </div>
+
+                </div>
+
+                <!-- Textarea: Message -->
+                <div class="contact-input-wrap full-width">
+                  <textarea id="contactMessage" class="contact-input contact-textarea" rows="4" placeholder="Type your message" required></textarea>
+                </div>
+
+                <!-- Checkbox: Privacy Agreement -->
+                <div class="contact-privacy-wrap">
+                  <label class="contact-checkbox-label">
+                    <input type="checkbox" id="contactPrivacy" class="contact-checkbox" required>
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-text">I agree to the privacy policy</span>
+                  </label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="contact-submit-wrap">
+                  <button type="submit" class="btn btn-orange btn-pill contact-submit-btn" id="contactSubmitBtn">
+                    <span>Submit</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Form Success Overlay / Message -->
+              <div class="contact-success-msg" id="contactSuccessMsg">
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h4>Thank you!</h4>
+                <p>Your message has been received. Our event team will get in touch with you shortly.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: CTA BANNER WITH MAP (Dark Container on Cream) ==================== -->
+    <section class="contact-map-cta-section" id="future-tech">
+      <div class="container">
+        <div class="contact-map-cta-card" data-reveal="fade-up">
+          
+          <!-- Top Row: Copy + Button -->
+          <div class="contact-map-cta-header">
+            <div class="contact-map-cta-left">
+              <h2 class="contact-map-cta-title">
+                READY TO JOIN<br>
+                THE FUTURE OF TECH?
+              </h2>
+            </div>
+            <div class="contact-map-cta-right">
+              <p class="contact-map-cta-desc">
+                Don't miss out on the biggest gathering of innovators, builders, and thought leaders. Secure your spot before it's too late.
+              </p>
+              <a href="#contact-form-section" class="btn btn-orange btn-pill contact-map-cta-btn">Gets your turn</a>
+            </div>
+          </div>
+
+          <!-- Bottom Row: Interactive Map Card matching exact layout -->
+          <div class="contact-map-wrapper">
+            <a href="https://www.google.com/maps/place/Stackly/@11.6829566,78.1739798,17z/data=!3m1!4b1!4m6!3m5!1s0x3babefef7fd970bb:0xe11aef1a71994f9!8m2!3d11.6829566!4d78.1739798!16s%2Fg%2F11l660s35r?entry=ttu&g_ep=EgoyMDI2MDcwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="contact-map-link" title="Open Stackly on Google Maps">
+              <img src="assets/contact-map.webp" alt="Stackly Location Map" class="contact-map-img">
+            </a>
+          </div>
+
+          <div class="contact-cta-glow"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== GLOBAL FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="STACKLY Home">
+            <img src="assets/logo.webp" alt="STACKLY" class="brand-logo-img">
+          </a>
+          <p>Full-service corporate event management agency delivering exceptional live and virtual experiences worldwide.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Follow us on</h4>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.com">info@stackly.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 STACKLY Corporate Event Management. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Terms of Service</a>
+          <span class="legal-dot">&bull;</span>
+          <a href="#">Security</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Master JavaScript -->
+  <script src="js/script.js?v=6.5"></script>
+</body>
+</html>
