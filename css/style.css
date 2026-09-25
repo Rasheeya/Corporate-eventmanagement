@@ -499,6 +499,76 @@ button, input, textarea, select {
   box-shadow: 0 8px 25px rgba(253, 83, 1, 0.4);
 }
 
+.btn-outline-white {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-outline-white:hover {
+  background: #FFFFFF;
+  color: #15140F !important;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: #15140F !important;
+  border: 1.5px solid #15140F;
+}
+
+.btn-outline-dark:hover {
+  background: #15140F;
+  color: #FFFFFF !important;
+  border-color: #15140F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(21, 20, 15, 0.25);
+}
+
+.btn-explore-specs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  background: rgba(21, 20, 15, 0.05);
+  border: 1.5px solid rgba(21, 20, 15, 0.15);
+  color: #15140F;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: auto;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
+}
+
+.btn-explore-specs i {
+  font-size: 0.78rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-explore-specs:hover,
+.format-card:hover .btn-explore-specs {
+  background: var(--theme-color, #FD5301);
+  border-color: var(--theme-color, #FD5301);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--theme-glow, rgba(253, 83, 1, 0.4));
+}
+
+.btn-explore-specs:hover i,
+.format-card:hover .btn-explore-specs i {
+  transform: translateX(4px);
+}
+
 .btn-ghost {
   background: rgba(255, 255, 255, 0.05);
   color: var(--color-secondary);
@@ -1900,6 +1970,12 @@ body.js-animate-ready [data-aos="slide-left"]:not(.aos-animate) { transform: tra
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Hide stray back to top button & prevent bottom gap */
+.back-to-top-btn,
+#backToTopBtn {
+  display: none !important;
 }
 
 

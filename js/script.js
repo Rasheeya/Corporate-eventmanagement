@@ -1974,6 +1974,21 @@
       password: false
     };
 
+    // Check if coming from successful registration
+    if (sessionStorage.getItem('signup_registered') === 'true') {
+      sessionStorage.removeItem('signup_registered');
+      const savedEmail = localStorage.getItem('aura_user_email');
+      if (emailInput && savedEmail) {
+        emailInput.value = savedEmail;
+      }
+      if (roleSelect) {
+        roleSelect.value = 'user';
+      }
+      if (passwordInput) {
+        setTimeout(() => passwordInput.focus(), 200);
+      }
+    }
+
     // Strict Validation Functions
     function validateLoginRole(isTyping = false) {
       if (!roleSelect) return true;
@@ -2525,12 +2540,7 @@
           localStorage.setItem('aura_user_name', nameVal);
           localStorage.setItem('aura_user_firstname', firstName);
           localStorage.setItem('aura_user_role', 'user');
-          localStorage.setItem('stackly_auth_user', JSON.stringify({
-            name: nameVal,
-            email: emailVal,
-            role: 'user',
-            signedUpAt: Date.now()
-          }));
+          sessionStorage.setItem('signup_registered', 'true');
         } catch (err) {
           console.warn('localStorage write error', err);
         }
@@ -2540,9 +2550,18 @@
           submitBtn.innerHTML = '<span>Creating Account...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
         }
 
+        // Reset and clear all given datas on the signup form
+        signupForm.reset();
+        [nameInput, emailInput, passInput, confirmInput].forEach((inp) => {
+          if (inp) {
+            inp.value = '';
+            inp.classList.remove('is-valid', 'is-invalid');
+          }
+        });
+
         setTimeout(() => {
-          window.location.href = 'userdashboard.html';
-        }, 600);
+          window.location.href = 'login.html';
+        }, 500);
       });
     }
   }
@@ -4671,64 +4690,29 @@
   }
 
   /**
-   * Interactive Article Reader Modal
+   * Blog Cards Direct Navigation to 404
    */
   function initBlogModal() {
-    var backdrop = document.getElementById('blogModalBackdrop');
-    var closeBtn = document.getElementById('blogModalClose');
-    if (!backdrop) return;
-
-    window.openBlogModal = function (articleTitle, category, date) {
-      backdrop.classList.add('is-open');
-      backdrop.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-
-      var titleEl = document.getElementById('blogModalTitle');
-      var catEl = document.getElementById('blogModalCategory');
-      var dateEl = document.getElementById('blogModalDate');
-
-      if (titleEl && articleTitle) titleEl.textContent = articleTitle;
-      if (catEl && category) catEl.textContent = category;
-      if (dateEl && date) dateEl.textContent = date;
-    };
-
-    window.closeBlogModal = function () {
-      backdrop.classList.remove('is-open');
-      backdrop.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
-
-    if (closeBtn) closeBtn.addEventListener('click', window.closeBlogModal);
-
-    backdrop.addEventListener('click', function (e) {
-      if (e.target === backdrop) window.closeBlogModal();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
-        window.closeBlogModal();
-      }
-    });
-
-    // Wire up blog cards
     var folderCards = document.querySelectorAll('.blog-folder-card');
     folderCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        var title = card.getAttribute('data-article') || (card.querySelector('.blog-folder-title') ? card.querySelector('.blog-folder-title').textContent : '');
-        var cat = card.getAttribute('data-category') || 'PRODUCTION';
-        var date = card.getAttribute('data-date') || 'July 2024';
-        window.openBlogModal(title, cat, date);
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = '404.html';
       });
     });
 
     var magCards = document.querySelectorAll('.blog-mag-card');
     magCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        var title = card.getAttribute('data-article') || (card.querySelector('.blog-mag-title') ? card.querySelector('.blog-mag-title').textContent : '');
-        var tag = card.querySelector('.blog-mag-tag') ? card.querySelector('.blog-mag-tag').textContent : 'EVENT INSIGHTS';
-        window.openBlogModal(title, tag, 'June 2024');
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = '404.html';
       });
     });
+
+    window.openBlogModal = function () {
+      window.location.href = '404.html';
+    };
+    window.closeBlogModal = function () {};
   }
 
   // ========================================================================

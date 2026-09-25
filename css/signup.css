@@ -547,19 +547,16 @@ body[data-page="signup"] .auth-divider-text {
   box-shadow: 0 8px 20px rgba(253, 83, 1, 0.4);
 }
 
-.btn-social-apple .social-icon {
+.btn-social-apple .social-icon,
+.btn-social-google .social-icon {
   font-size: 1.1rem;
   color: #15140F;
   transition: color 0.25s ease;
 }
 
-.btn-social-apple:hover .social-icon {
+.btn-social-apple:hover .social-icon,
+.btn-social-google:hover .social-icon {
   color: #FFFFFF;
-}
-
-.google-icon-svg {
-  width: 17px;
-  height: 17px;
 }
 
 /* Card Shake on Validation Error */
