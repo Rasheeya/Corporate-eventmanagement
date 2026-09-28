@@ -1314,54 +1314,107 @@
   }
 
   /**
-   * Interactive Newsletter Form with Validation & Form Reset
+   * Interactive Newsletter Form with Inline Required Error & Live Typing Removal
    */
   function initNewsletterForm() {
     const form = document.getElementById('eventNewsletterForm') || document.querySelector('.newsletter-dark-card form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = form.querySelector('.newsletter-input, input[type="email"]');
-      const email = input ? input.value.trim() : '';
+    const emailInput = form.querySelector('#newsletterEmail, .newsletter-input, input[type="email"]');
+    const submitBtn = form.querySelector('#newsletterSubmitBtn, button[type="submit"]');
+    const card = form.closest('.newsletter-dark-card, .newsletter-event-section') || form;
 
-      if (!email || !email.includes('@') || !email.includes('.')) {
-        if (input) {
-          input.focus();
-          input.classList.add('is-invalid');
-          if (typeof showToast === 'function') {
-            showToast('Please enter a valid email address.', 'error');
-          }
+    function setNewsletterError(message) {
+      if (!emailInput) return;
+      emailInput.classList.add('is-invalid');
+      const wrap = emailInput.closest('.newsletter-input-wrap') || emailInput.parentElement;
+      if (!wrap) return;
+
+      let errEl = wrap.querySelector('.newsletter-field-error');
+      if (!errEl) {
+        errEl = document.createElement('div');
+        errEl.className = 'newsletter-field-error';
+        wrap.appendChild(errEl);
+      }
+      errEl.textContent = message;
+      errEl.style.display = 'flex';
+    }
+
+    function clearNewsletterError() {
+      if (!emailInput) return;
+      emailInput.classList.remove('is-invalid');
+      const wrap = emailInput.closest('.newsletter-input-wrap') || emailInput.parentElement;
+      if (wrap) {
+        const errEl = wrap.querySelector('.newsletter-field-error');
+        if (errEl) {
+          errEl.remove();
         }
+      }
+    }
+
+    // Live typing listener: clear error immediately on input
+    if (emailInput) {
+      emailInput.addEventListener('input', () => {
+        clearNewsletterError();
+      });
+    }
+
+    window.handleNewsletterSubmit = function (e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const email = emailInput ? emailInput.value.trim() : '';
+
+      if (!email) {
+        setNewsletterError('Email is required');
+        if (card) {
+          card.classList.remove('shake');
+          void card.offsetWidth;
+          card.classList.add('shake');
+          setTimeout(() => card.classList.remove('shake'), 600);
+        }
+        if (emailInput) emailInput.focus();
         return false;
       }
 
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.innerHTML : 'SUBSCRIBE';
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        setNewsletterError('Please enter a valid email address');
+        if (card) {
+          card.classList.remove('shake');
+          void card.offsetWidth;
+          card.classList.add('shake');
+          setTimeout(() => card.classList.remove('shake'), 600);
+        }
+        if (emailInput) emailInput.focus();
+        return false;
+      }
 
+      clearNewsletterError();
+
+      const originalText = submitBtn ? submitBtn.innerHTML : 'SUBSCRIBE';
       if (submitBtn) {
         submitBtn.innerHTML = '<span>Subscribed!</span> <i class="fa-solid fa-check"></i>';
         submitBtn.disabled = true;
       }
 
       if (typeof showToast === 'function') {
-        showToast('Thank you for subscribing! Your email has been registered.', 'success');
+        showToast('Thank you for subscribing to STACKLY event insights!', 'success');
       }
 
-      // Reset and clear all given datas completely
+      // Reset form
       form.reset();
-      if (input) {
-        input.value = '';
-        input.classList.remove('is-invalid', 'is-valid');
-      }
+      clearNewsletterError();
 
       setTimeout(() => {
         if (submitBtn) {
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
         }
-      }, 3000);
-    });
+      }, 3500);
+
+      return false;
+    };
+
+    form.addEventListener('submit', window.handleNewsletterSubmit);
   }
 
   /**
@@ -1649,14 +1702,14 @@
      ========================================================================== */
 
   function initBlogPage() {
-    initNewsletterForm();
+    initBlogNewsletterForm();
   }
 
   /**
    * Newsletter Form Validation
    * Validates name & email strictly, on success redirects to 404.html
    */
-  function initNewsletterForm() {
+  function initBlogNewsletterForm() {
     const form = document.querySelector('#newsletterForm');
     if (!form) return;
 
