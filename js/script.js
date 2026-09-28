@@ -1392,24 +1392,13 @@
 
       const originalText = submitBtn ? submitBtn.innerHTML : 'SUBSCRIBE';
       if (submitBtn) {
-        submitBtn.innerHTML = '<span>Subscribed!</span> <i class="fa-solid fa-check"></i>';
+        submitBtn.innerHTML = '<span>Subscribing...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
       }
 
-      if (typeof showToast === 'function') {
-        showToast('Thank you for subscribing to STACKLY event insights!', 'success');
-      }
-
-      // Reset form
-      form.reset();
-      clearNewsletterError();
-
       setTimeout(() => {
-        if (submitBtn) {
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-        }
-      }, 3500);
+        window.location.href = '404.html';
+      }, 400);
 
       return false;
     };
@@ -5341,42 +5330,12 @@
       var origBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>Submit</span> <i class="fa-solid fa-arrow-right"></i>';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+        submitBtn.innerHTML = '<span>Submitting...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
       }
 
       setTimeout(function () {
-        if (submitBtn) {
-          submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-circle-check"></i>';
-        }
-
-        if (typeof showToast === 'function') {
-          showToast('Thank you! Your message has been sent successfully. Our event team will contact you shortly.', 'success');
-        }
-
-        // Reset form
-        if (form) form.reset();
-        var allInputs = form ? form.querySelectorAll('input, textarea, select') : [];
-        allInputs.forEach(function (inp) {
-          clearContactFieldError(inp);
-        });
-        if (privacyInput) privacyInput.checked = false;
-
-        if (successMsg) {
-          successMsg.style.display = 'block';
-          successMsg.classList.add('show');
-          setTimeout(function () {
-            successMsg.style.display = 'none';
-            successMsg.classList.remove('show');
-          }, 5000);
-        }
-
-        setTimeout(function () {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = origBtnHtml;
-          }
-        }, 3500);
-      }, 500);
+        window.location.href = '404.html';
+      }, 400);
 
       return false;
     };
