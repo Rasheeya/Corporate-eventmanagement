@@ -849,35 +849,84 @@ body[data-page="services"] {
   opacity: 1;
 }
 
-/* ==================== SECTION 6: TESTIMONIALS (Cream #F4EFE6) ==================== */
+/* ==================== SECTION 6: TESTIMONIALS (SINGLE LINE LOOP MODE) ==================== */
 .svc-testimonials-section {
   background-color: var(--svc-bg-cream);
-  padding: 90px 0;
+  padding: 100px 0 110px;
   border-top: 1px solid var(--svc-border-light);
+  overflow: hidden;
+  position: relative;
 }
 
 .svc-testimonials-header {
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 
-.svc-testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Single-Line Infinite Marquee Carousel Container */
+.svc-testimonials-loop-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 20px 0 35px;
+  /* Luxury edge fade masks */
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  cursor: grab;
+}
+
+.svc-testimonials-loop-container:active {
+  cursor: grabbing;
+}
+
+.svc-testimonials-loop-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: svcTestimonialSingleLineMarquee 38s linear infinite;
+}
+
+/* Pause loop animation on hover so user can easily read quotes */
+.svc-testimonials-loop-container:hover .svc-testimonials-loop-track,
+.svc-testimonials-loop-track.is-paused {
+  animation-play-state: paused;
+}
+
+.svc-testimonials-track-group {
+  display: flex;
   gap: 28px;
+  padding-right: 28px;
+  flex-shrink: 0;
+}
+
+@keyframes svcTestimonialSingleLineMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .svc-testi-card {
   background: var(--svc-peach-card);
-  border-radius: var(--svc-radius-md);
-  padding: 32px 28px 28px;
+  border-radius: 18px;
+  padding: 34px 28px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 12px 30px rgba(21, 20, 15, 0.09);
+  box-shadow: 0 10px 26px rgba(244, 173, 115, 0.28);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, background 0.3s ease;
-  min-height: 220px;
+  width: 380px;
+  min-width: 380px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.3s ease;
+  min-height: 230px;
   cursor: pointer;
+  position: relative;
 }
 
 .svc-testi-card:hover {
@@ -887,30 +936,30 @@ body[data-page="services"] {
 }
 
 .svc-testi-avatar-wrap {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .svc-testi-avatar {
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 
 .svc-testi-card:hover .svc-testi-avatar {
   transform: scale(1.15) rotate(4deg);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .svc-testi-quote {
   font-family: 'Inter', sans-serif;
-  font-size: 0.86rem;
-  line-height: 1.55;
+  font-size: 0.92rem;
+  line-height: 1.6;
   color: var(--svc-text-dark);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-weight: 450;
   flex-grow: 1;
 }
@@ -1427,10 +1476,6 @@ body[data-page="services"] {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .svc-testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .svc-offer-banner {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1479,8 +1524,10 @@ body[data-page="services"] {
     grid-template-columns: 1fr;
   }
 
-  .svc-testimonials-grid {
-    grid-template-columns: 1fr;
+  .svc-testi-card {
+    width: 320px;
+    min-width: 320px;
+    padding: 26px 22px;
   }
 
   .svc-floating-review {

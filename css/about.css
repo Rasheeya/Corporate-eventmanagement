@@ -1196,8 +1196,25 @@
   line-height: 1;
   color: var(--color-orange, #FD5301);
   letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
   text-shadow: 0 0 24px rgba(253, 83, 1, 0.6), 0 0 50px rgba(253, 83, 1, 0.25);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, text-shadow;
+}
+
+.stat-number.is-counting {
+  text-shadow: 0 0 35px rgba(253, 83, 1, 0.95), 0 0 70px rgba(253, 83, 1, 0.6);
+  transform: scale(1.02);
+}
+
+.stat-number.counted {
+  animation: statNumberPop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes statNumberPop {
+  0% { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
 
 .case-stat-item:hover .stat-number {
@@ -1212,11 +1229,12 @@
   margin-top: 6px;
   margin-bottom: 6px;
   transform-origin: left;
-  transform: scaleX(0.7);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform: scaleX(0.4);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   box-shadow: 0 0 8px rgba(253, 83, 1, 0.5);
 }
 
+.case-stat-item.is-revealed .stat-accent-bar,
 .case-stat-item:hover .stat-accent-bar {
   transform: scaleX(1);
   box-shadow: 0 0 14px rgba(253, 83, 1, 0.8);

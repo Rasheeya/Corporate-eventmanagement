@@ -95,6 +95,9 @@
         initComponentFallbacks();
         break;
     }
+
+    // 4. Global GSAP Kinetic Typography & Heading Animations
+    initGsapTextAnimations();
   }
 
   /**
@@ -285,6 +288,308 @@
     setTimeout(() => {
       animatedElements.forEach(revealElement);
     }, 500);
+  }
+
+  /**
+   * GSAP Kinetic Typography & Heading Reveal Animations
+   * Animates all page headings (h1, h2, h3, h4), hero titles, section titles, and badges
+   * Splits headings into masked words for a luxury staggered kinetic wave entrance
+   */
+  function initGsapTextAnimations() {
+    // 1. Skip if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /**
+     * Splits text nodes inside an element into word masks while preserving nested spans/tags
+     */
+    function splitWordsInElement(element) {
+      if (!element || element.dataset.gsapSplit === 'true') {
+        return element ? element.querySelectorAll('.gsap-word') : [];
+      }
+      element.dataset.gsapSplit = 'true';
+
+      // Ensure data-reveal on this element does not hide or fight GSAP transforms
+      if (element.hasAttribute('data-reveal')) {
+        element.classList.add('is-revealed');
+      }
+
+      function processNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent;
+          if (!text || !text.trim()) return document.createTextNode(text);
+
+          const tokens = text.split(/(\s+)/);
+          const fragment = document.createDocumentFragment();
+
+          tokens.forEach((token) => {
+            if (!token) return;
+            if (/^\s+$/.test(token)) {
+              fragment.appendChild(document.createTextNode(token));
+            } else {
+              const mask = document.createElement('span');
+              mask.className = 'gsap-word-mask';
+
+              const inner = document.createElement('span');
+              inner.className = 'gsap-word';
+              inner.textContent = token;
+
+              mask.appendChild(inner);
+              fragment.appendChild(mask);
+            }
+          });
+
+          return fragment;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (
+            node.tagName === 'BR' ||
+            node.tagName === 'I' ||
+            node.tagName === 'SVG' ||
+            node.classList.contains('gsap-word-mask') ||
+            node.classList.contains('count-up') ||
+            node.classList.contains('counter-val') ||
+            node.classList.contains('fa-solid') ||
+            node.classList.contains('fa-regular') ||
+            node.classList.contains('fa-brands')
+          ) {
+            return node;
+          }
+          const children = Array.from(node.childNodes);
+          children.forEach((child) => {
+            const res = processNode(child);
+            if (res !== child) {
+              node.replaceChild(res, child);
+            }
+          });
+          return node;
+        }
+        return node;
+      }
+
+      const rootChildren = Array.from(element.childNodes);
+      rootChildren.forEach((child) => {
+        const res = processNode(child);
+        if (res !== child) {
+          element.replaceChild(res, child);
+        }
+      });
+
+      return element.querySelectorAll('.gsap-word');
+    }
+
+    function applyAnimations() {
+      if (typeof gsap === 'undefined') return;
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+      if (document.body.dataset.gsapTextReady === 'true') return;
+      document.body.dataset.gsapTextReady = 'true';
+
+      // --- A. Main Hero Titles (h1, .hero-title, etc.) ---
+      const heroHeadings = document.querySelectorAll(
+        '.hero-title, .about-hero-title, .services-hero-title, .blog-hero-title, .contact-hero-title, .auth-heading, .not-found-code, h1:not(.dash-header h1)'
+      );
+
+      heroHeadings.forEach((heading) => {
+        if (!heading || heading.dataset.gsapDone) return;
+        heading.dataset.gsapDone = 'true';
+        heading.classList.add('gsap-text-heading');
+
+        const words = splitWordsInElement(heading);
+        if (words && words.length > 0) {
+          gsap.fromTo(
+            words,
+            {
+              yPercent: 120,
+              opacity: 0,
+              rotateX: -40,
+              rotateZ: 2
+            },
+            {
+              yPercent: 0,
+              opacity: 1,
+              rotateX: 0,
+              rotateZ: 0,
+              duration: 1.05,
+              stagger: 0.045,
+              ease: 'power4.out',
+              delay: 0.25
+            }
+          );
+        } else {
+          gsap.fromTo(
+            heading,
+            { y: 35, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.25 }
+          );
+        }
+      });
+
+      // --- B. Hero Subtitles, Kickers & Badges ---
+      const heroAccents = document.querySelectorAll(
+        '.hero-badge, .about-hero-kicker, .services-badge, .hero-desc, .about-hero-desc, .services-hero-desc, .blog-hero-desc, .contact-hero-desc'
+      );
+
+      heroAccents.forEach((accent, idx) => {
+        if (!accent || accent.dataset.gsapDone) return;
+        accent.dataset.gsapDone = 'true';
+
+        gsap.fromTo(
+          accent,
+          {
+            y: 22,
+            opacity: 0
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            delay: 0.35 + idx * 0.06
+          }
+        );
+      });
+
+      // --- C. Section Titles & Major h2 Headings (ScrollTrigger Driven with Word Stagger) ---
+      const sectionHeadings = document.querySelectorAll(
+        'h2, .section-title, .section-title-hubs, .section-title-process, .section-title-faq, .services-title, .cta-title, .contact-map-cta-title, .mosaic-heading, .stat-title, .svc-offer-headline'
+      );
+
+      sectionHeadings.forEach((heading) => {
+        if (!heading || heading.dataset.gsapDone) return;
+        heading.dataset.gsapDone = 'true';
+        heading.classList.add('gsap-text-heading');
+
+        const words = splitWordsInElement(heading);
+        if (typeof ScrollTrigger !== 'undefined') {
+          if (words && words.length > 0) {
+            gsap.fromTo(
+              words,
+              {
+                yPercent: 115,
+                opacity: 0,
+                rotateZ: 2.5
+              },
+              {
+                yPercent: 0,
+                opacity: 1,
+                rotateZ: 0,
+                duration: 0.95,
+                stagger: 0.035,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: heading,
+                  start: 'top 88%',
+                  once: true
+                }
+              }
+            );
+          } else {
+            gsap.fromTo(
+              heading,
+              { y: 35, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: heading,
+                  start: 'top 88%',
+                  once: true
+                }
+              }
+            );
+          }
+        } else {
+          heading.style.opacity = '1';
+        }
+      });
+
+      // --- D. Section Badges & Kicker Chips ---
+      const sectionBadges = document.querySelectorAll(
+        '.section-badge, .badge-gold, .about-badge, .services-section-badge, .cta-badge, .svc-offer-tag'
+      );
+
+      sectionBadges.forEach((badge) => {
+        if (!badge || badge.dataset.gsapDone) return;
+        badge.dataset.gsapDone = 'true';
+
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.fromTo(
+            badge,
+            {
+              y: 18,
+              opacity: 0,
+              scale: 0.92
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.75,
+              ease: 'back.out(1.7)',
+              scrollTrigger: {
+                trigger: badge,
+                start: 'top 90%',
+                once: true
+              }
+            }
+          );
+        }
+      });
+
+      // --- E. Subsection Headings & Important Card Titles (h3, h4) ---
+      const subHeadings = document.querySelectorAll(
+        'h3, .format-title, .service-card-title, .process-card-title, .hub-city-name, .contact-block-heading, .footer-heading, .faq-question-text, .mosaic-title, .blog-card-title'
+      );
+
+      subHeadings.forEach((sub) => {
+        if (!sub || sub.dataset.gsapDone) return;
+        sub.dataset.gsapDone = 'true';
+
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.fromTo(
+            sub,
+            {
+              y: 22,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sub,
+                start: 'top 92%',
+                once: true
+              }
+            }
+          );
+        }
+      });
+    }
+
+    // Check if GSAP is loaded or dynamically inject
+    if (typeof gsap === 'undefined') {
+      const gsapScript = document.createElement('script');
+      gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+      gsapScript.onload = function () {
+        const stScript = document.createElement('script');
+        stScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+        stScript.onload = applyAnimations;
+        stScript.onerror = applyAnimations;
+        document.head.appendChild(stScript);
+      };
+      gsapScript.onerror = function () {
+        console.warn('GSAP could not be loaded; text remains accessible.');
+      };
+      document.head.appendChild(gsapScript);
+    } else {
+      applyAnimations();
+    }
   }
 
   /**
@@ -663,36 +968,61 @@
   }
 
   /**
-   * Smooth Easing Number Counters (41, 840, 340+, 99%, 12, 0)
+   * Smooth Easing Number Counters (41, 640, 840, 340+, 99%, 12, etc.)
    */
   function initDynamicCounters() {
-    const counters = document.querySelectorAll('.count-up');
+    const counters = document.querySelectorAll('.count-up, .counter-val');
     if (!counters.length) return;
 
     const animateCount = (el) => {
-      const target = parseFloat(el.getAttribute('data-target') || '0');
-      const suffix = el.getAttribute('data-suffix') || '';
-      const duration = 2000;
+      if (el.dataset.countingStarted === 'true') return;
+      el.dataset.countingStarted = 'true';
+
+      const target = parseFloat(el.getAttribute('data-target') || el.textContent.replace(/[^0-9.]/g, '') || '0');
+      const suffix = el.getAttribute('data-suffix') || (el.textContent.includes('+') ? '+' : (el.textContent.includes('%') ? '%' : ''));
+      const prefix = el.getAttribute('data-prefix') || '';
+      const duration = 2200; // 2.2s silky smooth animation
       const startTime = performance.now();
+
+      el.classList.add('is-counting');
 
       function updateNumber(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease Out Quart
+        // Ease Out Quart for dramatic luxury acceleration and smooth deceleration
         const ease = 1 - Math.pow(1 - progress, 4);
         const currentVal = Math.floor(ease * target);
-        el.textContent = currentVal + (progress === 1 ? suffix : '');
+        
+        const displayVal = target >= 1000 ? currentVal.toLocaleString() : currentVal;
+        el.textContent = prefix + displayVal + (progress === 1 ? suffix : '');
 
         if (progress < 1) {
           requestAnimationFrame(updateNumber);
         } else {
-          el.textContent = target + suffix;
+          const finalVal = target >= 1000 ? target.toLocaleString() : target;
+          el.textContent = prefix + finalVal + suffix;
+          el.classList.remove('is-counting');
           el.classList.add('counted');
+
+          // Trigger parent container state
+          const parentItem = el.closest('.case-stat-item, .stat-card, .stat-number-wrap');
+          if (parentItem) {
+            parentItem.classList.add('is-revealed');
+          }
         }
       }
 
       requestAnimationFrame(updateNumber);
     };
+
+    // Ensure elements start from 0 display
+    counters.forEach(c => {
+      const suffix = c.getAttribute('data-suffix') || '';
+      const prefix = c.getAttribute('data-prefix') || '';
+      if (!c.dataset.countingStarted) {
+        c.textContent = prefix + '0' + suffix;
+      }
+    });
 
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -701,12 +1031,12 @@
           counterObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '100px 0px 100px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     counters.forEach(c => {
       counterObserver.observe(c);
       const rect = c.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 100) {
+      if (rect.top >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight)) {
         animateCount(c);
       }
     });
@@ -916,22 +1246,24 @@
    * Pauses smooth loop on touchstart for reading, resumes on release
    */
   function initTestimonialLoop() {
-    const loopContainer = document.querySelector('.testimonials-loop-container');
-    const loopTrack = document.querySelector('.testimonials-loop-track');
-    if (!loopContainer || !loopTrack) return;
+    const loopContainers = document.querySelectorAll('.testimonials-loop-container, .svc-testimonials-loop-container');
+    loopContainers.forEach((loopContainer) => {
+      const loopTrack = loopContainer.querySelector('.testimonials-loop-track, .svc-testimonials-loop-track');
+      if (!loopTrack) return;
 
-    // Mobile / touch interactions
-    loopContainer.addEventListener('touchstart', () => {
-      loopTrack.classList.add('is-paused');
-    }, { passive: true });
+      // Mobile / touch interactions
+      loopContainer.addEventListener('touchstart', () => {
+        loopTrack.classList.add('is-paused');
+      }, { passive: true });
 
-    loopContainer.addEventListener('touchend', () => {
-      loopTrack.classList.remove('is-paused');
-    }, { passive: true });
+      loopContainer.addEventListener('touchend', () => {
+        loopTrack.classList.remove('is-paused');
+      }, { passive: true });
 
-    loopContainer.addEventListener('touchcancel', () => {
-      loopTrack.classList.remove('is-paused');
-    }, { passive: true });
+      loopContainer.addEventListener('touchcancel', () => {
+        loopTrack.classList.remove('is-paused');
+      }, { passive: true });
+    });
   }
 
   /**
@@ -1160,50 +1492,7 @@
   }
 
 
-  /* ==========================================================================
-     ABOUT PAGE MODULES (about.html)
-     ========================================================================== */
-
-  function initAboutPage() {
-    // Numeric counter animation for the story floating stat
-    animateCounters();
-
-    if (typeof ScrollTrigger !== 'undefined') {
-      ScrollTrigger.refresh();
-    }
-  }
-
-  /**
-   * Animated Counter helper
-   */
-  function animateCounters() {
-    const counters = document.querySelectorAll('.counter-val');
-    counters.forEach((counter) => {
-      const target = +counter.getAttribute('data-target') || 25;
-      let count = 0;
-      const increment = Math.ceil(target / 40);
-
-      function updateCount() {
-        count += increment;
-        if (count < target) {
-          counter.textContent = count;
-          requestAnimationFrame(updateCount);
-        } else {
-          counter.textContent = target;
-        }
-      }
-      updateCount();
-    });
-  }
-
-  /* ==========================================================================
-     SERVICES PAGE MODULES (services.html)
-     ========================================================================== */
-
-  function initServicesPage() {
-    initFinancingCalculator();
-    initTestDriveForm();
-  }
+  // End of core modules
 
   /**
    * Interactive Financing Payment Calculator
@@ -1562,11 +1851,6 @@
   /* ==========================================================================
      CONTACT PAGE MODULES (contact.html)
      ========================================================================== */
-
-  function initContactPage() {
-    initContactForm();
-    initFaqAccordion();
-  }
 
   /**
    * Contact Form Validation
@@ -3732,6 +4016,16 @@
   // ========================================================================
 
   function initDashboardCommon() {
+    // Dashboard Logo: Clicking logo refreshes current page instead of redirecting
+    var dashboardLogos = document.querySelectorAll('.dash-sidebar-header .brand-logo, .dash-mobile-brand, .dash-mobile-logo');
+    dashboardLogos.forEach(function (logo) {
+      logo.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.reload();
+      });
+    });
+
     // Sidebar toggle (mobile)
     var toggle = document.querySelector('.dash-mobile-toggle');
     var sidebar = document.querySelector('.dash-sidebar');
@@ -4167,10 +4461,12 @@
   // ========================================================================
 
   function initServicesPage() {
+    initScrollReveal();
     initSvcHeroCanvas();
     initSvcCardTilt();
     initSvcFormatHover();
     initSvcTestimonialsTilt();
+    initTestimonialLoop();
     initSvcModal();
   }
 
@@ -4725,6 +5021,49 @@
     initContactHeroParticles();
     initContactTilt();
     initContactForm();
+    initDynamicCounters();
+    initFaqAccordion();
+    initHubClocks();
+  }
+
+  /**
+   * Live Digital Clocks for International Hubs (Bengaluru, London, Singapore, New York)
+   */
+  function initHubClocks() {
+    const clockElements = document.querySelectorAll('.hub-live-clock');
+    if (!clockElements.length) return;
+
+    function updateClocks() {
+      const now = new Date();
+      clockElements.forEach(el => {
+        const tz = el.getAttribute('data-timezone');
+        const valSpan = el.querySelector('.hub-clock-val');
+        if (!valSpan || !tz) return;
+
+        try {
+          const formatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: tz,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          });
+          
+          let abbr = 'LCL';
+          if (tz.includes('Kolkata')) abbr = 'IST';
+          else if (tz.includes('London')) abbr = 'GMT';
+          else if (tz.includes('Singapore')) abbr = 'SGT';
+          else if (tz.includes('New_York')) abbr = 'EST';
+
+          valSpan.textContent = `${formatter.format(now)} ${abbr}`;
+        } catch (e) {
+          valSpan.textContent = now.toLocaleTimeString() + ' LCL';
+        }
+      });
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
   }
 
   /**
@@ -5137,6 +5476,15 @@
       // A. DASHBOARD PAGES LOGIC (Admin & User Dashboards)
       // ==========================================
       if (isDashboard) {
+        // Logo click in both dashboards refreshes the current page instead of redirecting
+        if (interactiveEl.closest('.dash-mobile-brand, .dash-mobile-logo, .dash-sidebar-header a, .brand-logo, .brand-logo-img')) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          window.location.reload();
+          return;
+        }
+
         // Exempt the Sidebar Menus & Mobile Drawer Controls:
         const inSidebar = interactiveEl.closest('aside.dash-sidebar, aside.admin-sidebar, aside.client-sidebar, .dash-sidebar, .admin-sidebar, .client-sidebar, .dash-menu, .admin-menu, .client-menu');
         const isMobileSidebarToggle = interactiveEl.closest('.dash-mobile-toggle, .dash-sidebar-close, .dash-sidebar-backdrop, .client-mobile-toggle') ||
@@ -5146,7 +5494,7 @@
                                       interactiveEl.classList.contains('client-mobile-toggle');
 
         if (inSidebar || isMobileSidebarToggle) {
-          // Allow normal sidebar menu behavior (switching views, logout to login.html, logo to index.html, drawer open/close)
+          // Allow normal sidebar menu behavior (switching views, logout to login.html, drawer open/close)
           return;
         }
 
@@ -5226,12 +5574,21 @@
         }
       }
 
-      // 4. Accordions or modal close
+      // 4. Accordions, modal close, and map direct links
       if (interactiveEl.classList.contains('faq-header') || interactiveEl.closest('.faq-header')) {
         return;
       }
       if (interactiveEl.classList.contains('svc-modal-close') || interactiveEl.closest('.svc-modal-close') || interactiveEl.id === 'svcModalClose') {
         return;
+      }
+      if (interactiveEl.classList.contains('map-direct-btn') || interactiveEl.closest('.map-direct-btn, .contact-map-wrapper, .contact-hub-card, .contact-info-block, .contact-blocks-list')) {
+        const linkEl = interactiveEl.closest('a');
+        if (linkEl) {
+          const href = linkEl.getAttribute('href') || '';
+          if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) {
+            return;
+          }
+        }
       }
 
       // 5. For ALL other unused buttons, links, and icons in the webpage:
