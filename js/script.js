@@ -293,88 +293,11 @@
   /**
    * GSAP Kinetic Typography & Heading Reveal Animations
    * Animates all page headings (h1, h2, h3, h4), hero titles, section titles, and badges
-   * Splits headings into masked words for a luxury staggered kinetic wave entrance
+   * Preserves all gradient text spans, HTML tags, and ensures 100% crystal-clear visibility
    */
   function initGsapTextAnimations() {
     // 1. Skip if user prefers reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    /**
-     * Splits text nodes inside an element into word masks while preserving nested spans/tags
-     */
-    function splitWordsInElement(element) {
-      if (!element || element.dataset.gsapSplit === 'true') {
-        return element ? element.querySelectorAll('.gsap-word') : [];
-      }
-      element.dataset.gsapSplit = 'true';
-
-      // Ensure data-reveal on this element does not hide or fight GSAP transforms
-      if (element.hasAttribute('data-reveal')) {
-        element.classList.add('is-revealed');
-      }
-
-      function processNode(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-          const text = node.textContent;
-          if (!text || !text.trim()) return document.createTextNode(text);
-
-          const tokens = text.split(/(\s+)/);
-          const fragment = document.createDocumentFragment();
-
-          tokens.forEach((token) => {
-            if (!token) return;
-            if (/^\s+$/.test(token)) {
-              fragment.appendChild(document.createTextNode(token));
-            } else {
-              const mask = document.createElement('span');
-              mask.className = 'gsap-word-mask';
-
-              const inner = document.createElement('span');
-              inner.className = 'gsap-word';
-              inner.textContent = token;
-
-              mask.appendChild(inner);
-              fragment.appendChild(mask);
-            }
-          });
-
-          return fragment;
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          if (
-            node.tagName === 'BR' ||
-            node.tagName === 'I' ||
-            node.tagName === 'SVG' ||
-            node.classList.contains('gsap-word-mask') ||
-            node.classList.contains('count-up') ||
-            node.classList.contains('counter-val') ||
-            node.classList.contains('fa-solid') ||
-            node.classList.contains('fa-regular') ||
-            node.classList.contains('fa-brands')
-          ) {
-            return node;
-          }
-          const children = Array.from(node.childNodes);
-          children.forEach((child) => {
-            const res = processNode(child);
-            if (res !== child) {
-              node.replaceChild(res, child);
-            }
-          });
-          return node;
-        }
-        return node;
-      }
-
-      const rootChildren = Array.from(element.childNodes);
-      rootChildren.forEach((child) => {
-        const res = processNode(child);
-        if (res !== child) {
-          element.replaceChild(res, child);
-        }
-      });
-
-      return element.querySelectorAll('.gsap-word');
-    }
 
     function applyAnimations() {
       if (typeof gsap === 'undefined') return;
@@ -396,34 +319,27 @@
         heading.dataset.gsapDone = 'true';
         heading.classList.add('gsap-text-heading');
 
-        const words = splitWordsInElement(heading);
-        if (words && words.length > 0) {
-          gsap.fromTo(
-            words,
-            {
-              yPercent: 120,
-              opacity: 0,
-              rotateX: -40,
-              rotateZ: 2
-            },
-            {
-              yPercent: 0,
-              opacity: 1,
-              rotateX: 0,
-              rotateZ: 0,
-              duration: 1.05,
-              stagger: 0.045,
-              ease: 'power4.out',
-              delay: 0.25
-            }
-          );
-        } else {
-          gsap.fromTo(
-            heading,
-            { y: 35, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.25 }
-          );
+        if (heading.hasAttribute('data-reveal')) {
+          heading.classList.add('is-revealed');
         }
+
+        gsap.fromTo(
+          heading,
+          {
+            y: 38,
+            opacity: 0,
+            scale: 0.98
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.05,
+            ease: 'power3.out',
+            delay: 0.2,
+            clearProps: 'all'
+          }
+        );
       });
 
       // --- B. Hero Subtitles, Kickers & Badges ---
@@ -435,10 +351,14 @@
         if (!accent || accent.dataset.gsapDone) return;
         accent.dataset.gsapDone = 'true';
 
+        if (accent.hasAttribute('data-reveal')) {
+          accent.classList.add('is-revealed');
+        }
+
         gsap.fromTo(
           accent,
           {
-            y: 22,
+            y: 20,
             opacity: 0
           },
           {
@@ -446,12 +366,13 @@
             opacity: 1,
             duration: 0.85,
             ease: 'power3.out',
-            delay: 0.35 + idx * 0.06
+            delay: 0.3 + idx * 0.06,
+            clearProps: 'all'
           }
         );
       });
 
-      // --- C. Section Titles & Major h2 Headings (ScrollTrigger Driven with Word Stagger) ---
+      // --- C. Section Titles & Major h2 Headings (ScrollTrigger Driven) ---
       const sectionHeadings = document.querySelectorAll(
         'h2, .section-title, .section-title-hubs, .section-title-process, .section-title-faq, .services-title, .cta-title, .contact-map-cta-title, .mosaic-heading, .stat-title, .svc-offer-headline'
       );
@@ -461,47 +382,30 @@
         heading.dataset.gsapDone = 'true';
         heading.classList.add('gsap-text-heading');
 
-        const words = splitWordsInElement(heading);
+        if (heading.hasAttribute('data-reveal')) {
+          heading.classList.add('is-revealed');
+        }
+
         if (typeof ScrollTrigger !== 'undefined') {
-          if (words && words.length > 0) {
-            gsap.fromTo(
-              words,
-              {
-                yPercent: 115,
-                opacity: 0,
-                rotateZ: 2.5
+          gsap.fromTo(
+            heading,
+            {
+              y: 32,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: heading,
+                start: 'top 88%',
+                once: true
               },
-              {
-                yPercent: 0,
-                opacity: 1,
-                rotateZ: 0,
-                duration: 0.95,
-                stagger: 0.035,
-                ease: 'power3.out',
-                scrollTrigger: {
-                  trigger: heading,
-                  start: 'top 88%',
-                  once: true
-                }
-              }
-            );
-          } else {
-            gsap.fromTo(
-              heading,
-              { y: 35, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.9,
-                ease: 'power3.out',
-                scrollTrigger: {
-                  trigger: heading,
-                  start: 'top 88%',
-                  once: true
-                }
-              }
-            );
-          }
+              clearProps: 'all'
+            }
+          );
         } else {
           heading.style.opacity = '1';
         }
@@ -520,9 +424,9 @@
           gsap.fromTo(
             badge,
             {
-              y: 18,
+              y: 16,
               opacity: 0,
-              scale: 0.92
+              scale: 0.94
             },
             {
               y: 0,
@@ -534,7 +438,8 @@
                 trigger: badge,
                 start: 'top 90%',
                 once: true
-              }
+              },
+              clearProps: 'all'
             }
           );
         }
@@ -553,7 +458,7 @@
           gsap.fromTo(
             sub,
             {
-              y: 22,
+              y: 20,
               opacity: 0
             },
             {
@@ -565,7 +470,8 @@
                 trigger: sub,
                 start: 'top 92%',
                 once: true
-              }
+              },
+              clearProps: 'all'
             }
           );
         }

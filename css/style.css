@@ -1985,21 +1985,6 @@ body.js-animate-ready [data-aos="slide-left"]:not(.aos-animate) { transform: tra
 /* ==========================================================================
    GSAP KINETIC TEXT & TITLE ANIMATION STYLING
    ========================================================================== */
-.gsap-word-mask {
-  display: inline-block !important;
-  overflow: hidden !important;
-  vertical-align: top !important;
-  line-height: inherit !important;
-  padding-bottom: 0.12em !important;
-  margin-bottom: -0.12em !important;
-}
-
-.gsap-word {
-  display: inline-block !important;
-  transform-origin: 0% 100% !important;
-  will-change: transform, opacity !important;
-}
-
 .gsap-text-heading,
 .hero-title,
 .about-hero-title,
@@ -2012,21 +1997,16 @@ body.js-animate-ready [data-aos="slide-left"]:not(.aos-animate) { transform: tra
 .section-title-faq,
 .services-title,
 .cta-title {
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gsap-word-mask {
-    overflow: visible !important;
-  }
-  .gsap-word,
   .gsap-text-heading,
   h1, h2, h3, h4 {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
   }
 }
 
