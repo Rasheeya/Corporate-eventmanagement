@@ -1762,7 +1762,7 @@
    * Contact Form Validation
    * Strict validation for Full Name, Email, Phone, Subject, Message; redirects to 404.html on success
    */
-  function initContactForm() {
+  function initLegacyContactForm() {
     const form = document.querySelector('#contactForm');
     if (!form) return;
 
@@ -2270,39 +2270,24 @@
       return true;
     }
 
-    // Real-time Event Listeners
+    // Real-time Event Listeners - clear error as soon as user types or changes
     if (roleSelect) {
       roleSelect.addEventListener('change', () => {
-        touched.role = true;
-        validateLoginRole(false);
-      });
-      roleSelect.addEventListener('blur', () => {
-        touched.role = true;
-        validateLoginRole(false);
+        if (roleSelect.value) {
+          clearFieldError(roleSelect);
+        }
       });
     }
 
     if (emailInput) {
       emailInput.addEventListener('input', () => {
-        if (touched.email || emailInput.classList.contains('is-invalid')) {
-          validateLoginEmail(true);
-        }
-      });
-      emailInput.addEventListener('blur', () => {
-        touched.email = true;
-        validateLoginEmail(false);
+        clearFieldError(emailInput);
       });
     }
 
     if (passwordInput) {
       passwordInput.addEventListener('input', () => {
-        if (touched.password || passwordInput.classList.contains('is-invalid')) {
-          validateLoginPassword(true);
-        }
-      });
-      passwordInput.addEventListener('blur', () => {
-        touched.password = true;
-        validateLoginPassword(false);
+        clearFieldError(passwordInput);
       });
     }
 
@@ -2633,62 +2618,36 @@
       return true;
     }
 
-    // Attach real-time listeners
+    // Attach real-time listeners - clear error as soon as user types or changes
     if (nameInput) {
       nameInput.addEventListener('input', () => {
-        if (touched.name || nameInput.classList.contains('is-invalid')) {
-          validateName(true);
-        }
-      });
-      nameInput.addEventListener('blur', () => {
-        touched.name = true;
-        validateName(false);
+        clearFieldError(nameInput);
       });
     }
 
     if (emailInput) {
       emailInput.addEventListener('input', () => {
-        if (touched.email || emailInput.classList.contains('is-invalid')) {
-          validateEmail(true);
-        }
-      });
-      emailInput.addEventListener('blur', () => {
-        touched.email = true;
-        validateEmail(false);
+        clearFieldError(emailInput);
       });
     }
 
     if (passInput) {
       passInput.addEventListener('input', () => {
-        if (touched.pass || passInput.classList.contains('is-invalid')) {
-          validatePassword(true);
-        }
-        if (confirmInput && (touched.confirm || confirmInput.value)) {
-          validateConfirmPassword(true);
-        }
-      });
-      passInput.addEventListener('blur', () => {
-        touched.pass = true;
-        validatePassword(false);
+        clearFieldError(passInput);
       });
     }
 
     if (confirmInput) {
       confirmInput.addEventListener('input', () => {
-        if (touched.confirm || confirmInput.classList.contains('is-invalid')) {
-          validateConfirmPassword(true);
-        }
-      });
-      confirmInput.addEventListener('blur', () => {
-        touched.confirm = true;
-        validateConfirmPassword(false);
+        clearFieldError(confirmInput);
       });
     }
 
     if (termsInput) {
       termsInput.addEventListener('change', () => {
-        touched.terms = true;
-        validateTerms();
+        if (termsInput.checked) {
+          validateTerms();
+        }
       });
     }
 
@@ -3736,7 +3695,7 @@
     }
     if (errorEl) {
       errorEl.textContent = message;
-      errorEl.style.display = 'block';
+      errorEl.style.display = 'flex';
     }
   }
 
@@ -5143,49 +5102,185 @@
     var form = document.getElementById('contactMainForm');
     var successMsg = document.getElementById('contactSuccessMsg');
     var submitBtn = document.getElementById('contactSubmitBtn');
+    var card = document.getElementById('contactCard');
+
+    function setContactFieldError(inputEl, message) {
+      if (!inputEl) return;
+      inputEl.classList.add('is-invalid');
+      var wrap = inputEl.closest('.contact-input-wrap, .contact-privacy-wrap');
+      if (!wrap) return;
+      wrap.classList.remove('valid');
+      wrap.classList.add('invalid');
+
+      var errEl = wrap.querySelector('.contact-field-error');
+      if (!errEl) {
+        errEl = document.createElement('div');
+        errEl.className = 'contact-field-error';
+        wrap.appendChild(errEl);
+      }
+      errEl.textContent = message;
+      errEl.style.display = 'flex';
+    }
+
+    function clearContactFieldError(inputEl) {
+      if (!inputEl) return;
+      inputEl.classList.remove('is-invalid');
+      var wrap = inputEl.closest('.contact-input-wrap, .contact-privacy-wrap');
+      if (wrap) {
+        wrap.classList.remove('invalid');
+        var errEl = wrap.querySelector('.contact-field-error');
+        if (errEl) {
+          errEl.remove();
+        }
+      }
+    }
+
+    // Attach real-time input listeners to remove error as soon as user starts typing
+    var formInputs = [
+      document.getElementById('contactName'),
+      document.getElementById('contactEmail'),
+      document.getElementById('contactPhone'),
+      document.getElementById('contactBusinessType'),
+      document.getElementById('contactCompany'),
+      document.getElementById('contactLocation'),
+      document.getElementById('contactMessage')
+    ];
+
+    formInputs.forEach(function (inputEl) {
+      if (inputEl) {
+        inputEl.addEventListener('input', function () {
+          clearContactFieldError(inputEl);
+        });
+      }
+    });
+
+    var privacyInput = document.getElementById('contactPrivacy');
+    if (privacyInput) {
+      privacyInput.addEventListener('change', function () {
+        if (privacyInput.checked) {
+          clearContactFieldError(privacyInput);
+        }
+      });
+    }
 
     window.handleContactSubmit = function (e) {
       if (e && e.preventDefault) e.preventDefault();
 
       var nameInput = document.getElementById('contactName');
       var emailInput = document.getElementById('contactEmail');
+      var phoneInput = document.getElementById('contactPhone');
+      var businessInput = document.getElementById('contactBusinessType');
+      var companyInput = document.getElementById('contactCompany');
+      var locationInput = document.getElementById('contactLocation');
       var messageInput = document.getElementById('contactMessage');
       var privacyInput = document.getElementById('contactPrivacy');
 
+      var isValid = true;
+      var firstInvalid = null;
+
+      // 1. Name validation
       if (!nameInput || !nameInput.value.trim()) {
-        if (nameInput) {
-          nameInput.classList.add('is-invalid');
-          nameInput.focus();
-        }
-        return false;
-      } else if (nameInput) {
-        nameInput.classList.remove('is-invalid');
+        setContactFieldError(nameInput, 'Name is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = nameInput;
+      } else if (nameInput.value.trim().length < 2) {
+        setContactFieldError(nameInput, 'Name must be at least 2 characters');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = nameInput;
+      } else {
+        clearContactFieldError(nameInput);
       }
 
+      // 2. Email validation
       var emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
-      if (!emailInput || !emailInput.value.trim() || !emailPattern.test(emailInput.value.trim())) {
-        if (emailInput) {
-          emailInput.classList.add('is-invalid');
-          emailInput.focus();
-        }
-        return false;
-      } else if (emailInput) {
-        emailInput.classList.remove('is-invalid');
+      if (!emailInput || !emailInput.value.trim()) {
+        setContactFieldError(emailInput, 'Email is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = emailInput;
+      } else if (!emailPattern.test(emailInput.value.trim())) {
+        setContactFieldError(emailInput, 'Please enter a valid email address');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = emailInput;
+      } else {
+        clearContactFieldError(emailInput);
       }
 
+      // 3. Phone validation
+      if (!phoneInput || !phoneInput.value.trim()) {
+        setContactFieldError(phoneInput, 'Phone number is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = phoneInput;
+      } else {
+        var cleanPhone = phoneInput.value.trim().replace(/[\s\-\(\)\+]/g, '');
+        if (!/^\d{7,15}$/.test(cleanPhone)) {
+          setContactFieldError(phoneInput, 'Please enter a valid phone number');
+          isValid = false;
+          if (!firstInvalid) firstInvalid = phoneInput;
+        } else {
+          clearContactFieldError(phoneInput);
+        }
+      }
+
+      // 4. Business Type validation
+      if (!businessInput || !businessInput.value.trim()) {
+        setContactFieldError(businessInput, 'Business type is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = businessInput;
+      } else {
+        clearContactFieldError(businessInput);
+      }
+
+      // 5. Company validation
+      if (!companyInput || !companyInput.value.trim()) {
+        setContactFieldError(companyInput, 'Company is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = companyInput;
+      } else {
+        clearContactFieldError(companyInput);
+      }
+
+      // 6. Location validation
+      if (!locationInput || !locationInput.value.trim()) {
+        setContactFieldError(locationInput, 'Location is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = locationInput;
+      } else {
+        clearContactFieldError(locationInput);
+      }
+
+      // 7. Message validation
       if (!messageInput || !messageInput.value.trim()) {
-        if (messageInput) {
-          messageInput.classList.add('is-invalid');
-          messageInput.focus();
-        }
-        return false;
-      } else if (messageInput) {
-        messageInput.classList.remove('is-invalid');
+        setContactFieldError(messageInput, 'Message is required');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = messageInput;
+      } else if (messageInput.value.trim().length < 5) {
+        setContactFieldError(messageInput, 'Message must be at least 5 characters');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = messageInput;
+      } else {
+        clearContactFieldError(messageInput);
       }
 
+      // 8. Privacy Agreement validation
       if (privacyInput && !privacyInput.checked) {
-        if (privacyInput) {
-          privacyInput.focus();
+        setContactFieldError(privacyInput, 'Please agree to the privacy policy');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = privacyInput;
+      } else if (privacyInput) {
+        clearContactFieldError(privacyInput);
+      }
+
+      if (!isValid) {
+        if (card) {
+          card.classList.remove('shake');
+          void card.offsetWidth;
+          card.classList.add('shake');
+          setTimeout(function () {
+            card.classList.remove('shake');
+          }, 600);
+        }
+        if (firstInvalid && typeof firstInvalid.focus === 'function') {
+          firstInvalid.focus();
         }
         return false;
       }
@@ -5193,39 +5288,42 @@
       var origBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>Submit</span> <i class="fa-solid fa-arrow-right"></i>';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-circle-check"></i>';
-      }
-
-      if (typeof showToast === 'function') {
-        showToast('Thank you! Your message has been sent successfully. Our production team will contact you shortly.', 'success');
-      }
-
-      // Reset and clear all given datas completely
-      if (form) form.reset();
-      var allInputs = form ? form.querySelectorAll('input, textarea, select') : [];
-      allInputs.forEach(function (inp) {
-        inp.value = '';
-        inp.classList.remove('is-invalid', 'is-valid');
-        var wrap = inp.closest('.contact-input-wrap, .contact-privacy-wrap');
-        if (wrap) wrap.classList.remove('invalid', 'valid');
-      });
-      if (privacyInput) privacyInput.checked = false;
-
-      if (successMsg) {
-        successMsg.style.display = 'block';
-        successMsg.classList.add('show');
-        setTimeout(function () {
-          successMsg.style.display = 'none';
-          successMsg.classList.remove('show');
-        }, 5000);
+        submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
       }
 
       setTimeout(function () {
         if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = origBtnHtml;
+          submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-circle-check"></i>';
         }
-      }, 3500);
+
+        if (typeof showToast === 'function') {
+          showToast('Thank you! Your message has been sent successfully. Our event team will contact you shortly.', 'success');
+        }
+
+        // Reset form
+        if (form) form.reset();
+        var allInputs = form ? form.querySelectorAll('input, textarea, select') : [];
+        allInputs.forEach(function (inp) {
+          clearContactFieldError(inp);
+        });
+        if (privacyInput) privacyInput.checked = false;
+
+        if (successMsg) {
+          successMsg.style.display = 'block';
+          successMsg.classList.add('show');
+          setTimeout(function () {
+            successMsg.style.display = 'none';
+            successMsg.classList.remove('show');
+          }, 5000);
+        }
+
+        setTimeout(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origBtnHtml;
+          }
+        }, 3500);
+      }, 500);
 
       return false;
     };
@@ -5404,20 +5502,10 @@
           return;
         }
 
-        // Allow interacting with form input fields / dropdowns / toggles (not buttons/submits)
+        // Allow interacting with form input fields / dropdowns / toggles / submits
         const form = interactiveEl.closest('form');
         if (form) {
-          if (['INPUT', 'SELECT', 'TEXTAREA', 'LABEL'].includes(interactiveEl.tagName) && interactiveEl.type !== 'submit' && interactiveEl.type !== 'button') return;
-          if (interactiveEl.classList.contains('auth-pwd-toggle') || interactiveEl.closest('.auth-pwd-toggle')) return;
-
-          // If it's a submit button inside a form, validate form first
-          if (interactiveEl.type === 'submit' || interactiveEl.classList.contains('btn-submit')) {
-            if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
-              form.reportValidity();
-              e.preventDefault();
-              return;
-            }
-          }
+          return;
         }
 
         // All other unused links, buttons, and icons in the dashboard redirect to 404.html
@@ -5464,20 +5552,10 @@
       const inFooter = interactiveEl.closest('footer, .site-footer, .footer-wrap, .footer-container, .footer-col, .footer-bottom, .footer-links, .footer-nav, .footer-social, .footer-copyright');
       if (inFooter) return;
 
-      // 3. Check if inside a Form
+      // 3. Check if inside a Form (allow all inputs, labels, submit buttons, and toggles)
       const form = interactiveEl.closest('form');
       if (form) {
-        if (['INPUT', 'SELECT', 'TEXTAREA', 'LABEL'].includes(interactiveEl.tagName) && interactiveEl.type !== 'submit' && interactiveEl.type !== 'button') return;
-        if (interactiveEl.classList.contains('auth-pwd-toggle') || interactiveEl.closest('.auth-pwd-toggle')) return;
-
-        // If it's a submit button, validate form first
-        if (interactiveEl.type === 'submit' || interactiveEl.classList.contains('svc-modal-submit-btn')) {
-          if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
-            form.reportValidity();
-            e.preventDefault();
-            return;
-          }
-        }
+        return;
       }
 
       // 4. Accordions, modal close, and map direct links

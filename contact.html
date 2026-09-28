@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=7.6">
-  <link rel="stylesheet" href="css/contact.css?v=7.6">
+  <link rel="stylesheet" href="css/style.css?v=8.1">
+  <link rel="stylesheet" href="css/contact.css?v=8.1">
 </head>
 
 <body data-page="contact">
@@ -190,7 +190,7 @@
             <div class="contact-form-card" id="contactCard">
               <h3 class="contact-form-title">Fill The Form Below</h3>
 
-              <form class="contact-form" id="contactMainForm"
+              <form class="contact-form" id="contactMainForm" novalidate
                 onsubmit="event.preventDefault(); window.handleContactSubmit();">
                 <div class="contact-inputs-grid">
 
@@ -243,7 +243,8 @@
 
                 <!-- Submit Button -->
                 <div class="contact-submit-wrap">
-                  <button type="submit" class="btn btn-orange btn-pill contact-submit-btn" id="contactSubmitBtn">
+                  <button type="submit" class="btn btn-orange btn-pill contact-submit-btn" id="contactSubmitBtn"
+                    onclick="window.handleContactSubmit(event);">
                     <span>Submit</span>
                     <i class="fa-solid fa-arrow-right"></i>
                   </button>
@@ -842,7 +843,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Master JavaScript -->
-  <script src="js/script.js?v=7.6"></script>
+  <script src="js/script.js?v=8.1"></script>
 </body>
 
 </html>
